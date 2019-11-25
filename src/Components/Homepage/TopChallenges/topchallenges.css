@@ -1,0 +1,11 @@
+#top-ch-container{
+    background-color: grey;
+}
+
+.card-container{
+    margin-top:1rem;
+    margin-bottom:1rem;
+    padding:0.5rem;
+    background-color: #eee;
+    text-align: center;
+}
