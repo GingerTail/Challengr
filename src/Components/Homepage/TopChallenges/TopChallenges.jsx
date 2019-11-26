@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import "../TopChallenges/topchallenges.css"
+import "./topchallenges.css"
 
 export default class TopChallenges extends Component{
 
