@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../FilterNav/filternav.css";
 import { connect } from "react-redux";
 
+
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
