@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
-export default class Navbar extends Component{
-  constructor(props){
+export default class Navbar extends Component {
+  constructor(props) {
     super(props)
-    this.state={
+    this.state = {
       login: false
     }
 
   }
 
-  componentWillMount = () =>{
-    if(localStorage.getItem.token != null){
-      this.setState({login: true})
+  componentWillMount = () => {
+    if (localStorage.getItem.token != null) {
+      this.setState({ login: true })
     }
   }
 
@@ -22,17 +22,17 @@ render(){
     <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" className="d-inline-block align-top" alt=""/>
     Challengr
   </a>
-  <div className="float-right">
-    {this.state.login == false ? 
-    <>
-    <a href="#" className="mr-2">Login</a>
-    <a href="#">Signup</a>
-    </>
-    :
-    <a href="#">Account</a>
-    }
-  </div>
-</nav>
-  )
-}
+        <div className="float-right">
+          {this.state.login == false ?
+            <>
+              <a href="#" className="mr-2">Sign up</a>
+              <a href="#LogIn">Log In</a>
+            </>
+            :
+            <a href="#">Account</a>
+          }
+        </div>
+      </nav>
+    )
+  }
 }
