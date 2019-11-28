@@ -1,77 +1,59 @@
 import React,{Component} from "react"
 import "../ChallengesList/challengeslist.css"
-import MDBIcon from "mdbreact"
+import {connect} from "react-redux"
 
-export default class ChallengesList extends Component{
+const mapStateToProps = reduxStore => {
+    return reduxStore;
+  };
+
+class ChallengesList extends Component{
         constructor(props){
             super(props);
-            this.state={}
+            this.state={
+                challenges:[]
+            }
         }
+
+        componentDidMount = () => {
+            this.setState({ challenges: this.props.challengesList });
+          };
 
         render(){
             return(
                 <>
                 <div className="list-container">
                     <div className="row">
-                        <div className="col-sm-6 col-lg-12">
-                            <div className="card-challenge-container">
-                                <div className="row">
-                                    <div className="col-12 col-lg-10">
-                                <p><strong>QUIZ/CODE/DEMO</strong><br/>
-                                username<br/>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eum.<br/>
-                                <strong>HTML - CSS</strong>
-                                </p>
-                                </div>
-                                <div className="col-12 col-lg-2">
-                                    <p>Upvotes</p>
-                                    <p><strong>6,350</strong><i className="fas fa-thumbs-up ml-2"></i> </p>
-                                    <p><strong>Difficulty:</strong> Easy</p>
-                                </div>
+                        {this.state.challenges && 
+                        <>
+                        {this.state.challenges.map((singleChallenge, index) =>{
+                            return(
+                                <div className="col-sm-6 col-lg-12">
+                                <div className="card-challenge-container">
+                                    <div className="row">
+                                        <div className="col-12 col-lg-10">
+                                    <p><strong>QUIZ/CODE/DEMO</strong><br/>
+                                    username<br/>
+                                     Description: <br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eum.<br/>
+                                    <strong>HTML - CSS</strong>
+                                    </p>
                                     </div>
-                            </div>
-                            </div>
-                            <div className="col-sm-6 col-lg-12">
-                            <div className="card-challenge-container">
-                                <div className="row">
-                                    <div className="col-12 col-lg-10">
-                                <p><strong>QUIZ/CODE/DEMO</strong><br/>
-                                username<br/>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eum.<br/>
-                                <strong>HTML - CSS</strong>
-                                </p>
-                                </div>
-                                <div className="col-12 col-lg-2">
-                                    <p>Upvotes</p>
-                                    <p><strong>6,350</strong><i className="fas fa-thumbs-up ml-2"></i> </p>
-                                    <p><strong>Difficulty:</strong> Easy</p>
-                                </div>
+                                    <div className="col-12 col-lg-2">
+                                        <p>Upvotes</p>
+                                        
+                                        <p><strong>Difficulty:</strong> Easy</p>
                                     </div>
-                            </div>
-                            </div>
-                       
-                            <div className="col-sm-6 col-lg-12">
-                            <div className="card-challenge-container">
-                                <div className="row">
-                                    <div className="col-12 col-lg-10">
-                                <p><strong>QUIZ/CODE/DEMO</strong><br/>
-                                username<br/>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eum.<br/>
-                                <strong>HTML - CSS</strong>
-                                </p>
+                                        </div>
                                 </div>
-                                <div className="col-12 col-lg-2">
-                                    <p>Upvotes</p>
-                                    <p><strong>6,350</strong><i className="fas fa-thumbs-up ml-2"></i> </p>
-                                    <p><strong>Difficulty:</strong> Easy</p>
                                 </div>
-                                    </div>
-                            </div>
-                            </div>
-                      
+                            )
+                        })}
+                        </>
+                        }                    
                     </div>
                 </div>
                 </>
             )
         }
 }
+
+export default connect(mapStateToProps)(ChallengesList)

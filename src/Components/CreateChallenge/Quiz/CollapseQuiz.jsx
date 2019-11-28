@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import React, { Component } from 'react';
 
-const CollapseQuiz = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+class CollapseQuiz extends Component{
 
-  const toggle = () => setIsOpen(!isOpen);
 
-  return (
-    <div>
-<p onClick={toggle} style={{ marginBottom: '1rem', color:"blue" }}>{props.question}</p>
-      <Collapse isOpen={isOpen}>
-        <Card>
-          <CardBody>
-          {props.correct}
-          {props.wrong1}
-          {props.wrong2}
-          {props.wrong3}
-          </CardBody>
-        </Card>
-      </Collapse>
-    </div>
-  );
+  render(){
+    return(
+      <>
+             <div id="prova">
+            <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    answers list
+  </div>
+</div>
+            </div>
+      </>
+    )
+  }
 }
-
 export default CollapseQuiz;
