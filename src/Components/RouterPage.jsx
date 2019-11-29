@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import {connect} from "react-redux"
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
+import CreateChallenge from "./CreateChallenge/CreateChallenge";
 
 const mapStateToProps = reduxStore => {
     return reduxStore;
@@ -47,6 +48,7 @@ class RouterPage extends Component{
               <Router>
                  <Navbar/>
                 <Route exact path="/" component={Homepage}/>
+                <Route exact path="/create" component={CreateChallenge}/>
               </Router>
             )
         }

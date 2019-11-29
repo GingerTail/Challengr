@@ -8,8 +8,8 @@ const initialState = {
     challengeList: [],
         languages:[],
         difficulty:[],
-        type:[]
-    
+        type:[],
+        quiz:[1, 2, 3]    
 }
 
  

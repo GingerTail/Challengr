@@ -21,6 +21,11 @@ export default function(state = {}, action) {
                 ...state,
                 type: [...action.payload]
               };
+              case "ADD_QUESTION":
+                return {
+                    ...state,
+                    quiz: this.state.quiz.concat(action.payload)
+                  };
     default:
       return state;
   }
