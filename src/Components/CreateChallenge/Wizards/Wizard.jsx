@@ -7,9 +7,9 @@ import Summary from "../Summary/Summary"
 
 const steps = 
     [
-      {name: 'General Settings', component: <GeneralSettings/>},
       {name: 'Quiz', component: <Quiz/>},
       {name: 'Demo', component:<Demo/>},
+      {name: 'General Settings', component: <GeneralSettings/>},
       {name: 'Summary', component: <Summary/>}
     ]
 
