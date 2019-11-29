@@ -23,6 +23,7 @@ class QuizFrom extends Component {
       }
     };
   }
+}
 
   showstore = () => {
     console.log(this.props.quiz);

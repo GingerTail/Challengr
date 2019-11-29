@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import QuizFrom from "./QuizForm";
 import QuizList from "./QuizList";
-import "../Quiz/quiz.css";
+import "./Quiz.css";
 
 export default class Quiz extends Component {
   constructor(props) {
