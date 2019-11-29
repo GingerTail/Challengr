@@ -90,7 +90,7 @@ class FilterNav extends Component {
         <div className="filternav-container">
           <div className="row">
             <h4>Filter:</h4>
-            <div className="col-12">
+            <div className="col-12 text-left">
               <form action="/action_page.php">
                 <p>
                   <strong>Languages</strong>
@@ -101,7 +101,7 @@ class FilterNav extends Component {
                   value="javascript"
                   onClick={event => this.EditFilter(event)}
                 />{" "}
-                Javascript
+               <p className="d-inline">Javascript</p>
                 <br />
                 <input
                   type="checkbox"

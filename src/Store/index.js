@@ -5,7 +5,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
-    challengeList: [],
+    challengeList: [1,2,3],
         languages:[],
         difficulty:[],
         type:[],

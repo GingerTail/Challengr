@@ -15,7 +15,7 @@ class ChallengesList extends Component{
         }
 
         componentDidMount = () => {
-            this.setState({ challenges: this.props.challengesList });
+            this.setState({ challenges: this.props.challengeList });
           };
 
         render(){
@@ -23,22 +23,22 @@ class ChallengesList extends Component{
                 <>
                 <div className="list-container">
                     <div className="row">
-                        {this.state.challenges && 
+                        {this.props.challengeList && 
                         <>
-                        {this.state.challenges.map((singleChallenge, index) =>{
+                        {this.props.challengeList.map((singleChallenge, index) =>{
                             return(
                                 <div className="col-sm-6 col-lg-12">
                                 <div className="card-challenge-container">
                                     <div className="row">
                                         <div className="col-12 col-lg-10">
                                     <p><strong>QUIZ/CODE/DEMO</strong><br/>
-                                    username<br/>
+                                    author name<br/>
                                      Description: <br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eum.<br/>
                                     <strong>HTML - CSS</strong>
                                     </p>
                                     </div>
                                     <div className="col-12 col-lg-2">
-                                        <p>Upvotes</p>
+                                        <p>Upvotes: </p>
                                         
                                         <p><strong>Difficulty:</strong> Easy</p>
                                     </div>
