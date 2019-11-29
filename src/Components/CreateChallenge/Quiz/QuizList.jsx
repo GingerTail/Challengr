@@ -14,16 +14,19 @@ const mapStateToProps = reduxStore => {
 
     render(){
         return(
-                    <div>
-                        <h1>quizlist</h1>
-                        {this.props.quiz.map((singleQuiz, index) =>{
+                    <div className="row">
+                         <div className="col-12">
+                          {this.props.quiz.map((singleQuiz, index) =>{
                                     return(
                                         <CollapseQuiz
                                         question={"what?"}
                                         correct={"ciao"}
+                                        id={index}
                                     />
+
                                     )
             })}
+            </div>
                     </div>
         )
     }
