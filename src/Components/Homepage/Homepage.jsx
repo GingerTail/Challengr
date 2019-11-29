@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import TopChallenges from "./TopChallenges/TopChallenges";
 import Challenges from "./Challenges/Challenges";
 

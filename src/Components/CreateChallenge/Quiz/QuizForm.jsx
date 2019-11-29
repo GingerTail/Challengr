@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
+import "../Quiz/quiz.css"
 
 const mapStateToProps = reduxStore => {
     return reduxStore;
@@ -41,7 +42,7 @@ class QuizFrom extends Component{
 
     render(){
         return(
-            <div>
+            <>
                     <div className="row">
                     <div className="col-sm-12 col-lg-6 align-self-end">
                     <label for="exampleFormControlTextarea1">1. Question </label>
@@ -67,10 +68,12 @@ class QuizFrom extends Component{
                     <input className="d-inline" type="text"/>
                     </div>
                         </div>
-                        <div className="text-center">
-                        <button className="btn btn-primary">Add Question</button>
+                        <div className="">
+                        <button className="btn btn-primary">+ Add to list</button>
                         </div>
-            </div>
+                        <hr/>
+            </>
+            
         )
     }
 }

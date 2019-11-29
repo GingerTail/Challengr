@@ -6,18 +6,16 @@ class CollapseQuiz extends Component{
   render(){
     return(
       <>
-             <div id="prova">
-            <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
+            <p className="d-inline mr-2">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target={`#collapse-${this.props.id}`} aria-expanded="false" aria-controls={`collapse-${this.props.id}`}>
+    {this.props.id}
+  </button>
 </p>
-<div class="collapse" id="collapseExample">
+<div class="collapse" id={`collapse-${this.props.id}`}>
   <div class="card card-body">
     answers list
   </div>
 </div>
-            </div>
       </>
     )
   }

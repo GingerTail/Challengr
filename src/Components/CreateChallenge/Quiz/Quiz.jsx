@@ -12,14 +12,14 @@ export default class Quiz extends Component{
             <>
             <div className="quiz-container text-left mb-5">
                 <div className="row">
-                    <div className="col-6">
-                        <QuizList/>
-
-                    </div>
-                    <div className="col-6">
+                    <div className="col-12">
                         <QuizFrom/>
                         
                         </div>
+                    <div className="col-12">
+                        <QuizList/>
+
+                    </div>
                 </div>
 
             </div>
