@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({
   fetchChallenges: () => dispatch(handleFetchChallenges())
 });
 
-const handleFetchChallenges = async () => {
+const handleFetchChallenges = () => {
   return async function(dispatch, getState) {
     let response = await fetch("http://localhost:3015/challenge?limit=8", {
       headers: {
@@ -18,11 +18,10 @@ const handleFetchChallenges = async () => {
     });
     if (response.ok) {
       let json = await response.json();
-      console.log(json);
 
       dispatch({
         type: "STORE_DATA",
-        payload: json
+        payload: json.challenges
       });
     }
   };
@@ -36,9 +35,9 @@ class ChallengesList extends Component {
     };
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     //this.setState({ challenges: this.props.challengeList });
-    await handleFetchChallenges();
+    this.props.fetchChallenges();
   };
 
   getContentInfo = challenge => {

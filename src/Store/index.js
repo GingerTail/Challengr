@@ -7,7 +7,7 @@ import quizReducer from "../Reducers/quizReducer";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
-  challengeList: [1, 2, 3],
+  challengeList: [],
   filter: {
     languages: [],
     difficulty: [],

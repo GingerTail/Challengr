@@ -1,19 +1,19 @@
-import React,{Component} from "react"
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
 
 const mapStateToProps = reduxStore => {
-    return reduxStore;
-  };
-  
-  const mapDispatchToProps = dispatch => ({
-        fetchData:()=>
-        dispatch(handleFetchData())
-  })
+  return reduxStore;
+};
 
+/* const mapDispatchToProps = dispatch => ({
+  fetchData: () => dispatch({})
+});
+ */
+/*
   const handleFetchData= () =>{
     return async function(
         dispatch,
@@ -31,30 +31,22 @@ const mapStateToProps = reduxStore => {
             payload: result
         })
     }
+  } */
+
+class RouterPage extends Component {
+  componentWillMount = async () => {
+    //await this.props.fetchData();
+  };
+
+  render() {
+    return (
+      <Router>
+        <Navbar />
+        <Route exact path="/" component={Homepage} />
+        <Route exact path="/create" component={CreateChallenge} />
+      </Router>
+    );
   }
-  
-
-class RouterPage extends Component{
-
-
-    componentWillMount = async () =>{  
-        await this.props.fetchData();
-    
-    } 
-
-
-        render(){
-            return(
-              <Router>
-                 <Navbar/>
-                <Route exact path="/" component={Homepage}/>
-                <Route exact path="/create" component={CreateChallenge}/>
-              </Router>
-            )
-        }
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(RouterPage);
+export default connect(mapStateToProps /* mapDispatchToProps */)(RouterPage);

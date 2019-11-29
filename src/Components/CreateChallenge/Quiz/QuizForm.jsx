@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "../Quiz/quiz.css";
+import "../Quiz/Quiz.css";
 import { handleAddQuestion } from "../../../Actions/handleAddQuestion";
 
 const mapStateToProps = reduxStore => {
@@ -23,7 +23,6 @@ class QuizFrom extends Component {
       }
     };
   }
-}
 
   showstore = () => {
     console.log(this.props.quiz);
@@ -44,7 +43,7 @@ class QuizFrom extends Component {
     this.props.addQuestion(question);
   };
 
-  updateCorrectAnswer(event) {
+  updateCorrectAnswer = event => {
     let correct = event.target.value;
     if (correct !== null) {
       this.setState(prevState => ({
@@ -54,9 +53,9 @@ class QuizFrom extends Component {
         }
       }));
     }
-  }
+  };
 
-  updateWrongAnswer(event) {
+  updateWrongAnswer = event => {
     let answers = this.state.question.answers;
     answers[event.target.name] = event.target.value;
     this.setState(prevState => ({
@@ -65,7 +64,7 @@ class QuizFrom extends Component {
         answers: answers
       }
     }));
-  }
+  };
 
   addWrongAnswer = () => {
     let answers = this.state.question.answers;
@@ -77,6 +76,7 @@ class QuizFrom extends Component {
       }
     }));
   };
+
   render() {
     return (
       <>
