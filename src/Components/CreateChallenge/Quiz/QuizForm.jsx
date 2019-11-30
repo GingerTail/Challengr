@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "../Quiz/quiz.css";
+import style from "./Quiz.module.css";
 import { handleAddQuestion } from "../../../Actions/handleAddQuestion";
 
 const mapStateToProps = reduxStore => {

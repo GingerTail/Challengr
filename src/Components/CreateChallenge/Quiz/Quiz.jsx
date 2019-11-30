@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import QuizFrom from "./QuizForm";
 import QuizList from "./QuizList";
-import "../Quiz/quiz.css";
+import style from "./Quiz.module.css";
 
 export default class Quiz extends Component {
   constructor(props) {
@@ -19,8 +19,8 @@ export default class Quiz extends Component {
     return (
       <>
         <div
-          className={`quiz-container text-left mb-5 ${
-            this.state.isLoaded ? "fadeIn" : ""
+          className={`${style.quizContainer} text-left mb-5 ${
+            this.state.isLoaded ? style.fadeIn : ""
           }`}
         >
           <div className="row">
