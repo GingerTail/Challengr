@@ -19,8 +19,8 @@ export default class Quiz extends Component {
     return (
       <>
         <div
-          className={`quiz-container text-left mb-5 ${
-            this.state.isLoaded ? "fadeIn" : ""
+          className={`${style.quizContainer} text-left mb-5 ${
+            this.state.isLoaded ? style.fadeIn : ""
           }`}
         >
           <div className="row">

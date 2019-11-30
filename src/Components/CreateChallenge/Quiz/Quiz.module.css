@@ -1,0 +1,25 @@
+.quizContainer {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-out 2s;
+}
+
+.quizContainer.fadeIn {
+  opacity: 1;
+}
+
+.textImg {
+  color: white;
+  position: absolute;
+  bottom: 0%;
+}
+
+input {
+  width: 100%;
+}
+
+/* to add to global scope 
+
+:global(.row) {
+  background: green;
+} */
