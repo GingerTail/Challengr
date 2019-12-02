@@ -3,6 +3,8 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import challengeListReducer from "../Reducers/challengeListReducer";
 import filterReducer from "../Reducers/filterReducer";
 import quizReducer from "../Reducers/quizReducer";
+import uploadReducer from "../Reducers/uploadReducer";
+import validateReducer from "../Reducers/validateReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -27,13 +29,17 @@ const initialState = {
     description: "",
     pdfLink: "",
     author: ""
-  }
+  },
+  pdf: [],
+  validate: null
 };
 
 const bigReducer = combineReducers({
   challengeList: challengeListReducer,
   filter: filterReducer,
-  quiz: quizReducer
+  quiz: quizReducer,
+  pdf: uploadReducer,
+  validate: validateReducer
 });
 
 export default function configureStore() {

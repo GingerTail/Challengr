@@ -19,8 +19,8 @@ export default class Quiz extends Component {
     return (
       <>
         <div
-          className={ `${style.quizContainer} text-left mb-5 ${
-            this.state.isLoaded ?  style.fadeIn  : ""
+          className={`${style.quizContainer} text-left mb-5 ${
+            this.state.isLoaded ? style.fadeIn : ""
           }`}
         >
           <div className="row">
@@ -32,7 +32,6 @@ export default class Quiz extends Component {
             </div>
           </div>
         </div>
-        <style jsx>{``}</style>
       </>
     );
   }
