@@ -82,7 +82,7 @@ class QuizFrom extends Component {
       <>
         <div className="row">
           <div className="col-sm-12 col-lg-6 align-self-end">
-            <label for="exampleFormControlTextarea1">Question </label>
+            <label>Question </label>
             <input
               className="d-inline"
               name="title"
@@ -109,7 +109,7 @@ class QuizFrom extends Component {
           </div>
           {this.state.question.answers.map((answer, index) => {
             return (
-              <div className="col-sm-12 col-lg-6">
+              <div className="col-sm-12 col-lg-6" key={index}>
                 <p className="d-inline pl-4">Wrong</p>
                 <input
                   className="d-inline"

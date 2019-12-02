@@ -21,6 +21,7 @@ class QuizList extends Component {
                 question={"what?"}
                 correct={"ciao"}
                 id={index + 1}
+                key={index}
               />
             );
           })}
