@@ -33,9 +33,7 @@ class QuizFrom extends Component {
     let correctAnswer = this.state.question.correct;
     let title = this.state.inputText;
     let question = {
-      question: {
-        text: title
-      },
+      text: title,
       answers: wrongAnswers, //strings
       correctAnswer: correctAnswer
     };

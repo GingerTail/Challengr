@@ -1,44 +1,110 @@
 import React, { Component } from "react";
 import AnimatedMulti from "./Dropdown/Dropdown";
 
-export default class GeneralSettings extends Component {
+import { connect } from "react-redux";
+import DropdownMenu from "../provadrop";
+
+const mapDispatchToProps = dispatch => ({
+  addGeneralSettings: (event, typeAction) =>
+    dispatch({
+      type: typeAction,
+      payload: event
+    })
+});
+
+class GeneralSettings extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      description: ""
+    };
+  }
+
+  updateDifficulty = e => {
+    this.props.addGeneralSettings(e.target.value, "UPDATE_DIFFICULTY");
+  };
+
+  updateDescription = e => {
+    this.setState({ description: e.target.value });
+    this.props.addGeneralSettings(this.state.description, "UPDATE_DESCRIPTION");
+  };
+
   render() {
     return (
       <div className="container text-left mb-5 animated fadeIn">
         <div className="row">
           <div className="col-sm-12 col-md-6">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Description:</label>
-              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+            <div className="htmlForm-group">
+              <label>Description:</label>
+              <textarea
+                className="htmlForm-control rounded-0"
+                id="examplehtmlFormControlTextarea1"
+                value={this.state.description}
+                onChange={e => this.updateDescription(e)}
+                rows="10"
+              ></textarea>
             </div>
           </div>
           <div className="col-sm-12 col-md-6 mt-4 pl-5">
             <div id="difficulty">
-              <label for="exampleFormControlTextarea1">Difficulty: </label>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios"/>
-                <label class="custom-control-label" for="defaultGroupExample1">
+              <label>Difficulty: </label>
+              <div className="custom-control custom-radio">
+                <input
+                  type="radio"
+                  onClick={e => this.updateDifficulty(e)}
+                  className="custom-control-input"
+                  id="defaultGroupExample1"
+                  name="groupOfDefaultRadios"
+                  value="easy"
+                />
+                <label
+                  className="custom-control-label"
+                  htmlFor="defaultGroupExample1"
+                >
                   Easy
                 </label>
               </div>
 
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios"/>
-                <label class="custom-control-label" for="defaultGroupExample2">
+              <div className="custom-control custom-radio">
+                <input
+                  type="radio"
+                  onClick={e => this.updateDifficulty(e)}
+                  className="custom-control-input"
+                  id="defaultGroupExample2"
+                  name="groupOfDefaultRadios"
+                  value="normal"
+                />
+                <label
+                  className="custom-control-label"
+                  htmlFor="defaultGroupExample2"
+                >
                   Normal
                 </label>
               </div>
 
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios"/>
-                <label class="custom-control-label" for="defaultGroupExample3">
+              <div className="custom-control custom-radio">
+                <input
+                  type="radio"
+                  onClick={e => this.updateDifficulty(e)}
+                  className="custom-control-input"
+                  id="defaultGroupExample3"
+                  name="groupOfDefaultRadios"
+                  value="hard"
+                />
+                <label
+                  className="custom-control-label"
+                  htmlFor="defaultGroupExample3"
+                >
                   Hard
                 </label>
               </div>
             </div>
             <div id="languages" className="mt-4">
-              <label for="exampleFormControlTextarea1">Languages </label>
-                <AnimatedMulti/>
+              <label htmlFor="examplehtmlFormControlTextarea1">
+                Languages{" "}
+              </label>
+              <DropdownMenu />
+              {/* <AnimatedMulti /> */}
             </div>
           </div>
         </div>
@@ -46,3 +112,5 @@ export default class GeneralSettings extends Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(GeneralSettings);
