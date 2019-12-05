@@ -3,10 +3,9 @@ import Select from "react-select";
 import { connect } from "react-redux";
 
 const options = [
-  { value: "html", label: "HTML" },
-  { value: "css", label: "CSS" },
-  { value: "javascript", label: "Javascript" },
-  { value: "nodejs", label: "NodeJS" }
+  { value: "C#", label: "C#" },
+  { value: "Javascript", label: "Javascript" },
+  { value: "NodeJs", label: "NodeJS" }
 ];
 
 const mapDispatchToProps = dispatch => ({

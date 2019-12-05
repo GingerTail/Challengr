@@ -15,9 +15,7 @@ const mapDispatchToProps = dispatch => ({
 class GeneralSettings extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      description: ""
-    };
+    this.state = {};
   }
 
   updateDifficulty = e => {
@@ -25,8 +23,7 @@ class GeneralSettings extends Component {
   };
 
   updateDescription = e => {
-    this.setState({ description: e.target.value });
-    this.props.addGeneralSettings(this.state.description, "UPDATE_DESCRIPTION");
+    this.props.addGeneralSettings(e.target.value, "UPDATE_DESCRIPTION");
   };
 
   render() {
@@ -39,7 +36,6 @@ class GeneralSettings extends Component {
               <textarea
                 className="htmlForm-control rounded-0"
                 id="examplehtmlFormControlTextarea1"
-                value={this.state.description}
                 onChange={e => this.updateDescription(e)}
                 rows="10"
               ></textarea>

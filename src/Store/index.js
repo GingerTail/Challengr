@@ -15,6 +15,10 @@ const initialState = {
     numberOfChallenges: 0
   },
   generalSettings: {
+    author: "",
+    difficulty: 1,
+    content: [],
+    description: "",
     languages: []
   },
   filter: {
@@ -25,14 +29,17 @@ const initialState = {
 
   quiz: {
     time: 0,
+    author: "",
     questions: [
       {
-        title: "",
-        correct: "",
-        wrong: [""]
+        question: {
+          text: "",
+          image: ""
+        },
+        correctAnswer: "",
+        answers: [""]
       }
-    ],
-    author: ""
+    ]
   },
   demo: {
     description: "",

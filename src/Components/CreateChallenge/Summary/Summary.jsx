@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { handleGetQuiz } from "../../../Actions/CreateChallengeActions";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
+const mapDispatchToProps = dispatch => ({
+  getQuizContent: quiz => dispatch(handleGetQuiz(quiz))
+});
 
 class Summary extends Component {
+  submitChallenge = async () => {
+    this.props.getQuizContent(this.props.quiz);
+    console.log(this.props.generalSettings.content);
+  };
   render() {
     return (
       <>
@@ -37,7 +45,7 @@ class Summary extends Component {
                   <div key={index}>
                     <p>
                       {" "}
-                      <strong> Q.{index + 1}</strong> {question.text}
+                      <strong> Q.{index + 1}</strong> {question.question.text}
                     </p>
                     <p className="d-inline px-1">{question.correctAnswer}</p>
                     {question.answers.map((answer, index) => {
@@ -66,10 +74,11 @@ class Summary extends Component {
               </div>
             )}
           </div>
+          <button onClick={this.submitChallenge}>Submit</button>
         </div>
       </>
     );
   }
 }
 
-export default connect(mapStateToProps)(Summary);
+export default connect(mapStateToProps, mapDispatchToProps)(Summary);

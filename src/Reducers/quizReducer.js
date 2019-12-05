@@ -12,15 +12,15 @@ export default function(state = {}, action) {
           ...state.questions.slice(0, action.payload.id),
           {
             ...state.questions[action.payload.id],
-            wrong: [
+            answers: [
               //prima parte dell'array originale
-              ...state.questions[action.payload.id].wrong.slice(
+              ...state.questions[action.payload.id].answers.slice(
                 0,
-                action.payload.name
+                action.payload.index
               ), //value aggiornato qua
               action.payload.value,
-              ...state.questions[action.payload.id].wrong.slice(
-                action.payload.name + 1
+              ...state.questions[action.payload.id].answers.slice(
+                action.payload.index + 1
               )
             ]
           },
@@ -34,7 +34,7 @@ export default function(state = {}, action) {
           ...state.questions.slice(0, action.payload.id),
           {
             ...state.questions[action.payload.id],
-            correct: action.payload.value
+            correctAnswer: action.payload.value
           },
           ...state.questions.slice(action.payload.id + 1)
         ]
@@ -46,7 +46,10 @@ export default function(state = {}, action) {
           ...state.questions.slice(0, action.payload.id),
           {
             ...state.questions[action.payload.id],
-            title: action.payload.value
+            question: {
+              text: action.payload.value,
+              image: action.payload.image || ""
+            }
           },
           ...state.questions.slice(action.payload.id + 1)
         ]

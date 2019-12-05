@@ -7,15 +7,38 @@ export default function(state = {}, action) {
       };
     case "UPDATE_DIFFICULTY":
       console.log(action.payload);
+      let difficulty = 0;
+      switch (action.payload) {
+        case "easy":
+          difficulty = 1;
+          break;
+        case "normal":
+          difficulty = 2;
+          break;
+        case "hard":
+          difficulty = 3;
+          break;
+        default:
+          break;
+      }
+      console.log(difficulty);
       return {
         ...state,
-        difficulty: action.payload
+        difficulty //difficulty: difficulty
       };
     case "UPDATE_LANGUAGES":
       return {
         ...state,
         languages: [...state.languages, action.payload]
       };
+      case "CREATE_QUIZ_CONTENT":
+        return{
+          ...state,
+          content:[
+            ...state.content,
+            action.payload
+          ]
+        }
     default:
       return state;
   }

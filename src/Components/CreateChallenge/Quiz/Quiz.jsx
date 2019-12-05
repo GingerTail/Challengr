@@ -31,7 +31,6 @@ class Quiz extends Component {
   };
 
   AddQuestion = () => {
-    console.log(this.state.question);
     this.props.addQuestion(this.state.question);
   };
 
@@ -45,7 +44,6 @@ class Quiz extends Component {
         >
           <div className="row">
             {this.props.quiz.questions.map((question, index) => {
-              console.log(index);
               return (
                 <div className="col-12" key={index}>
                   <QuizFrom index={index} />

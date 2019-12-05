@@ -32,21 +32,26 @@ class QuizFrom extends Component {
       value: event.target.value,
       id: this.props.index
     };
-    console.log(payload);
     this.props.addQuestion(payload, "ADD_CORRECT");
   };
 
   //UPDATE THE VALUE OF THE WRONG ANSWER
-  updateWrongAnswer = event => {
-    let answers = [...this.state.answers];
-    answers[event.target.name].value = event.target.value;
-    this.setState({ answers });
-    this.props.addQuestion(event.target, "ADD_WRONG");
+  updateWrongAnswer = (event, index) => {
+    let value = event.target.value;
+    let answerId = index;
+    let objAnswer = {
+      answerId,
+      value,
+      index,
+      id: this.props.index
+    };
+    this.props.addQuestion(objAnswer, "ADD_WRONG");
   };
 
   updateTitle = event => {
     let payload = {
       value: event.target.value,
+      image: "",
       id: this.props.index
     };
     this.props.addQuestion(payload, "ADD_TITLE");
@@ -102,10 +107,9 @@ class QuizFrom extends Component {
                 <p className="d-inline pl-4">Wrong</p>
                 <input
                   className="d-inline"
-                  name={index}
                   id={this.props.index}
                   type="text"
-                  onChange={e => this.updateWrongAnswer(e)}
+                  onChange={e => this.updateWrongAnswer(e, index)}
                 />
               </div>
             );
