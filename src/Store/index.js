@@ -26,7 +26,13 @@ const initialState = {
 
   quiz: {
     time: 0,
-    questions: [],
+    questions: [
+      {
+        title: "",
+        correct: "",
+        wrong: [""]
+      }
+    ],
     author: ""
   },
   demo: {

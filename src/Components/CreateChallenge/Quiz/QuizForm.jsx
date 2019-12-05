@@ -28,19 +28,6 @@ class QuizFrom extends Component {
     console.log(this.props.quiz);
   };
 
-  SubmitQuestion = () => {
-    let wrongAnswers = this.state.question.answers;
-    let correctAnswer = this.state.question.correct;
-    let title = this.state.inputText;
-    let question = {
-      text: title,
-      answers: wrongAnswers, //strings
-      correctAnswer: correctAnswer
-    };
-    console.log(question);
-    this.props.addQuestion(question);
-  };
-
   updateCorrectAnswer = event => {
     let correct = event.target.value;
     if (correct !== null) {
@@ -79,6 +66,13 @@ class QuizFrom extends Component {
     return (
       <>
         <div className="row">
+          <div className="col-sm-12 col-lg-6 text-center mb-5">
+            <img
+              src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
+              className=""
+              width="150px"
+            />
+          </div>
           <div className="col-sm-12 col-lg-6 align-self-end">
             <label>Question </label>
             <input
@@ -89,13 +83,7 @@ class QuizFrom extends Component {
               onChange={e => this.setState({ inputText: e.target.value })}
             />
           </div>
-          <div className="col-sm-12 col-lg-6 text-center mb-5">
-            <img
-              src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
-              className=""
-              width="150px"
-            />
-          </div>
+
           <div className="col-sm-12 col-lg-6">
             <p className="d-inline pl-4">Correct</p>
             <input
@@ -119,19 +107,9 @@ class QuizFrom extends Component {
             );
           })}
         </div>
-        <div className="d-inline mr-4">
-          <button className="btn btn-primary" onClick={this.SubmitQuestion}>
-            + Add to list
-          </button>
-        </div>
         <div className="d-inline">
           <button className="btn btn-primary" onClick={this.addWrongAnswer}>
             add wrong answer
-          </button>
-        </div>
-        <div className="">
-          <button className="btn btn-primary" onClick={this.showstore}>
-            Test reduxquiz
           </button>
         </div>
         <hr />
