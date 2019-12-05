@@ -22,7 +22,6 @@ const initialState = {
     difficulty: "",
     type: []
   },
-  quizTest: [1, 2, 3],
 
   quiz: {
     time: 0,
