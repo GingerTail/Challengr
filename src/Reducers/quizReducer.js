@@ -54,6 +54,21 @@ export default function(state = {}, action) {
           ...state.questions.slice(action.payload.id + 1)
         ]
       };
+    case "ADD_IMAGE_QUESTION":
+      return {
+        ...state,
+        questions: [
+          ...state.questions.slice(0, action.id),
+          {
+            ...state.questions[action.id],
+            question: {
+              text: state.questions[action.id].question.text,
+              image: action.imageUrl
+            }
+          },
+          ...state.questions.slice(action.id + 1)
+        ]
+      };
     default:
       return state;
   }

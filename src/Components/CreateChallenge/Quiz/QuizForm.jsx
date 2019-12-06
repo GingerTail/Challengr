@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../Quiz/Quiz.module.css";
+import { uploadImageQuiz } from "../../../Actions/CreateChallengeActions";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -11,7 +12,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: typeAction,
       payload: event
-    })
+    }),
+  uploadImage: (formData, index) => dispatch(uploadImageQuiz(formData, index))
 });
 
 class QuizFrom extends Component {
@@ -21,33 +23,33 @@ class QuizFrom extends Component {
       counter: 0,
       answers: [],
       title: "",
-      correct: ""
+      correct: "",
+      file: null
     };
   }
 
   //UPDATE THE VALUE OF THE CORRECT ANSWER
   updateCorrectAnswer = event => {
-    this.setState({ correct: event.target.value });
     let payload = {
       value: event.target.value,
+      index: 0,
       id: this.props.index
     };
     this.props.addQuestion(payload, "ADD_CORRECT");
+    this.props.addQuestion(payload, "ADD_WRONG");
   };
 
   //UPDATE THE VALUE OF THE WRONG ANSWER
   updateWrongAnswer = (event, index) => {
-    let value = event.target.value;
-    let answerId = index;
-    let objAnswer = {
-      answerId,
-      value,
-      index,
-      id: this.props.index
+    let payload = {
+      value: event.target.value, //TEXT OF THE ANSWER
+      index, //INDEX OF THE QUESTION
+      id: this.props.index //ID OF THE ANSWER
     };
-    this.props.addQuestion(objAnswer, "ADD_WRONG");
+    this.props.addQuestion(payload, "ADD_WRONG");
   };
 
+  //UPDATE THE TITLE OF THE QUESTION
   updateTitle = event => {
     let payload = {
       value: event.target.value,
@@ -70,19 +72,48 @@ class QuizFrom extends Component {
     this.setState({ counter: (this.state.counter += 1) });
   };
 
+  //UPLOAD IMAGE IN REDUX
+  uploadImage = async file => {
+    console.log(file.target.files[0]);
+    var formData = new FormData();
+    formData.append("question_images", file.target.files[0]);
+    for (var key of formData.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
+    this.props.uploadImage(formData, this.props.index);
+  };
+
   render() {
     return (
       <>
         <div className="row">
-          <div className="col-sm-12 col-lg-6 text-center mb-5">
-            <img
-              src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
-              className=""
-              width="150px"
+          <div className="col-sm-12 col-lg-12 text-center mb-5">
+            <p className="">
+              <strong>Upload an Image: </strong>
+            </p>
+            {this.props.quiz.questions[this.props.index].question.image !==
+            "" ? (
+              <img
+                src={this.props.quiz.questions[this.props.index].question.image}
+                alt="image question"
+                width="150px"
+              />
+            ) : (
+              <img
+                src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
+                alt="empty image"
+                width="150px"
+              />
+            )}
+            <input
+              type="file"
+              name="pic"
+              accept=".jpg, .png, .jpeg"
+              onChange={e => this.uploadImage(e)}
             />
           </div>
           <div className="col-sm-12 col-lg-6 align-self-end">
-            <label>Question </label>
+            <label>Question {this.props.index + 1} </label>
             <input
               className="d-inline"
               name="title"
@@ -91,8 +122,10 @@ class QuizFrom extends Component {
               onChange={e => this.updateTitle(e)}
             />
           </div>
-
           <div className="col-sm-12 col-lg-6">
+            <p>
+              <strong>Answers List</strong>
+            </p>
             <p className="d-inline pl-4">Correct</p>
             <input
               className="d-inline"
@@ -109,7 +142,7 @@ class QuizFrom extends Component {
                   className="d-inline"
                   id={this.props.index}
                   type="text"
-                  onChange={e => this.updateWrongAnswer(e, index)}
+                  onChange={e => this.updateWrongAnswer(e, index + 1)}
                 />
               </div>
             );

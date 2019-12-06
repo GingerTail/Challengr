@@ -31,14 +31,12 @@ export default function(state = {}, action) {
         ...state,
         languages: [...state.languages, action.payload]
       };
-      case "CREATE_QUIZ_CONTENT":
-        return{
-          ...state,
-          content:[
-            ...state.content,
-            action.payload
-          ]
-        }
+    case "CREATE_QUIZ_CONTENT":
+      console.log(action.payload);
+      return {
+        ...state,
+        content: [...state.content, action.payload]
+      };
     default:
       return state;
   }

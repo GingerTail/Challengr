@@ -28,7 +28,7 @@ const initialState = {
   },
 
   quiz: {
-    time: 0,
+    time: 300,
     author: "",
     questions: [
       {

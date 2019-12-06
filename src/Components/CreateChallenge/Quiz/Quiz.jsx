@@ -19,9 +19,12 @@ class Quiz extends Component {
     this.state = {
       isLoaded: false,
       question: {
-        title: "",
-        correct: "",
-        wrong: [""]
+        question: {
+          text: "",
+          image: ""
+        },
+        correctAnswer: "",
+        answers: [""]
       }
     };
   }
