@@ -15,6 +15,7 @@ const initialState = {
     numberOfChallenges: 0
   },
   generalSettings: {
+    time: 300,
     author: "",
     difficulty: 1,
     content: [],

@@ -4,6 +4,7 @@ import QuizList from "./QuizList";
 import { connect } from "react-redux";
 import style from "./Quiz.module.css";
 import { handleAddQuestion } from "../../../Actions/handleAddQuestion";
+import { Link } from "react-router-dom";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -25,7 +26,8 @@ class Quiz extends Component {
         },
         correctAnswer: "",
         answers: [""]
-      }
+      },
+      nextPage: false
     };
   }
 
@@ -37,11 +39,18 @@ class Quiz extends Component {
     this.props.addQuestion(this.state.question);
   };
 
+  allowLink = event => {
+    if (this.props.quiz.questions.length <= 4) {
+      event.preventDefault();
+    } else console.log("works");
+  };
+
   render() {
     return (
       <>
+        <h3 className="text-center">Quiz</h3>
         <div
-          className={`${style.quizContainer} text-left mb-5 ${
+          className={`${style.quizContainer} container-fluid text-left mb-5 ${
             this.state.isLoaded ? style.fadeIn : ""
           }`}
         >
@@ -53,12 +62,24 @@ class Quiz extends Component {
                 </div>
               );
             })}
-            <button className="btn btn-primary" onClick={this.AddQuestion}>
-              Add Question
-            </button>
-            <div className="col-12">
-              <QuizList />
+            <div className="col-12 text-center">
+              <button
+                className="btn btn-primary float-left"
+                onClick={this.AddQuestion}
+              >
+                Add Question
+              </button>
+              <Link
+                to="/create/demo"
+                /*   onClick={event => this.allowLink(event)} */
+                className="btn btn-primary disabled-link"
+              >
+                Next
+              </Link>
             </div>
+            {/* <div className="col-12 mt-3">
+              <QuizList />
+            </div> */}
           </div>
         </div>
       </>

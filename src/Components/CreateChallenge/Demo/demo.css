@@ -5,12 +5,16 @@
   color: red;
 }
 #validation-container {
-  margin-top: 1rem; 
+  margin-top: 1rem;
 }
-
+.form-control {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
 .dropzone-container {
   background-color: #eee;
-  max-width: 250px;
+  max-width: 300px;
   text-align: center;
   margin: 0 auto;
   padding: 4rem;

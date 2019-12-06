@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleGetQuiz } from "../../../Actions/CreateChallengeActions";
+import { Link } from "react-router-dom";
+import { handleCreateChallengr } from "../../../Actions/CreateChallengeActions";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
 const mapDispatchToProps = dispatch => ({
-  getQuizContent: quiz => dispatch(handleGetQuiz(quiz))
+  getQuizContent: quiz => dispatch(handleGetQuiz(quiz)),
+  createChallengr: generalSettings =>
+    dispatch(handleCreateChallengr(generalSettings))
 });
 
 class Summary extends Component {
   submitChallenge = async () => {
     this.props.getQuizContent(this.props.quiz);
-    console.log(this.props.generalSettings.content);
+    console.log(this.props.generalSettings);
+    setTimeout(() => {
+      this.props.createChallengr(this.props.generalSettings);
+    }, 2000);
   };
   render() {
     return (
@@ -40,7 +47,6 @@ class Summary extends Component {
             <div className="col-12" id="quiz-section">
               <h3 className="text-center">Quiz</h3>
               {this.props.quiz.questions.map((question, index) => {
-                console.log(question);
                 return (
                   <div key={index}>
                     <p>
@@ -73,8 +79,21 @@ class Summary extends Component {
                 </p>
               </div>
             )}
+            <div className="col-12 mt-4 text-center">
+              <Link
+                to="/create/generalsettings"
+                className="btn btn-primary disabled-link mr-1"
+              >
+                Previous
+              </Link>
+              <button
+                className="btn btn-primary"
+                onClick={this.submitChallenge}
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          <button onClick={this.submitChallenge}>Submit</button>
         </div>
       </>
     );
