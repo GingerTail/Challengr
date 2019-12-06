@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../ChallengesList/challengeslist.css";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const mapStateToProps = reduxStore => reduxStore;
 const mapDispatchToProps = dispatch => ({
@@ -83,6 +84,9 @@ class ChallengesList extends Component {
     let pagesArray = this.getPagination();
     return (
       <>
+        <Link className="btn btn-primary mb-2" to="create/quiz">
+          + Add Challenge
+        </Link>
         <div className="list-container">
           <div className="row">
             {this.props.challengeList.challenges && (

@@ -9,6 +9,7 @@ import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
 import Demo from "./CreateChallenge/Demo/Demo";
 import Summary from "./CreateChallenge/Summary/Summary";
 import MainPage from "./QuizPlay/MainPage"
+import displayChallenge from "./StartChallenge/test";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -58,6 +59,7 @@ class RouterPage extends Component {
         />
         <Route exact path="/create/summary" component={Summary} />
         <Route path="/playQuiz/:id" component={MainPage}/>
+        <Route exact path="/challenge" component={displayChallenge} />
       </Router>
     );
   }
