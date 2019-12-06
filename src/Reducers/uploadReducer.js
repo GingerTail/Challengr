@@ -4,7 +4,7 @@ export default function(state = {}, action) {
       console.log(action.payload);
       return {
         ...state,
-        pdf: action.payload
+        ...action.payload
       };
     default:
       return state;

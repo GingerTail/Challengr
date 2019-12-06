@@ -5,6 +5,7 @@ import filterReducer from "../Reducers/filterReducer";
 import quizReducer from "../Reducers/quizReducer";
 import uploadReducer from "../Reducers/uploadReducer";
 import validateReducer from "../Reducers/validateReducer";
+import generalSettingsReducer from "../Reducers/generalSettingReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -13,17 +14,32 @@ const initialState = {
     challenges: [],
     numberOfChallenges: 0
   },
+  generalSettings: {
+    author: "",
+    difficulty: 1,
+    content: [],
+    description: "",
+    languages: []
+  },
   filter: {
     languages: [],
-    difficulty: [],
+    difficulty: "",
     type: []
   },
-  quizTest: [1, 2, 3],
 
   quiz: {
-    time: 0,
-    questions: [],
-    author: ""
+    time: 300,
+    author: "",
+    questions: [
+      {
+        question: {
+          text: "",
+          image: ""
+        },
+        correctAnswer: "",
+        answers: [""]
+      }
+    ]
   },
   demo: {
     description: "",
@@ -39,7 +55,8 @@ const bigReducer = combineReducers({
   filter: filterReducer,
   quiz: quizReducer,
   pdf: uploadReducer,
-  validate: validateReducer
+  validate: validateReducer,
+  generalSettings: generalSettingsReducer
 });
 
 export default function configureStore() {

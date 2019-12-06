@@ -1,104 +1,131 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../Quiz/Quiz.module.css";
-import { handleAddQuestion } from "../../../Actions/handleAddQuestion";
+import { uploadImageQuiz } from "../../../Actions/CreateChallengeActions";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
 
 const mapDispatchToProps = dispatch => ({
-  addQuestion: question => dispatch(handleAddQuestion(question))
+  addQuestion: (event, typeAction) =>
+    dispatch({
+      type: typeAction,
+      payload: event
+    }),
+  uploadImage: (formData, index) => dispatch(uploadImageQuiz(formData, index))
 });
 
 class QuizFrom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputText: "",
-      question: {
-        title: "",
-        correct: "",
-        answers: [""]
-      }
+      counter: 0,
+      answers: [],
+      title: "",
+      correct: "",
+      file: null
     };
   }
 
-  showstore = () => {
-    console.log(this.props.quiz);
-  };
-
-  SubmitQuestion = () => {
-    let wrongAnswers = this.state.question.answers;
-    let correctAnswer = this.state.question.correct;
-    let title = this.state.inputText;
-    let question = {
-      question: {
-        text: title
-      },
-      answers: wrongAnswers, //strings
-      correctAnswer: correctAnswer
-    };
-    console.log(question);
-    this.props.addQuestion(question);
-  };
-
+  //UPDATE THE VALUE OF THE CORRECT ANSWER
   updateCorrectAnswer = event => {
-    let correct = event.target.value;
-    if (correct !== null) {
-      this.setState(prevState => ({
-        question: {
-          ...prevState.question,
-          correct: correct
-        }
-      }));
-    }
+    let payload = {
+      value: event.target.value,
+      index: 0,
+      id: this.props.index
+    };
+    this.props.addQuestion(payload, "ADD_CORRECT");
+    this.props.addQuestion(payload, "ADD_WRONG");
   };
 
-  updateWrongAnswer = event => {
-    let answers = this.state.question.answers;
-    answers[event.target.name] = event.target.value;
-    this.setState(prevState => ({
-      question: {
-        ...prevState.question,
-        answers: answers
-      }
-    }));
+  //UPDATE THE VALUE OF THE WRONG ANSWER
+  updateWrongAnswer = (event, index) => {
+    let payload = {
+      value: event.target.value, //TEXT OF THE ANSWER
+      index, //INDEX OF THE QUESTION
+      id: this.props.index //ID OF THE ANSWER
+    };
+    this.props.addQuestion(payload, "ADD_WRONG");
   };
 
+  //UPDATE THE TITLE OF THE QUESTION
+  updateTitle = event => {
+    let payload = {
+      value: event.target.value,
+      image: "",
+      id: this.props.index
+    };
+    this.props.addQuestion(payload, "ADD_TITLE");
+  };
+
+  //  ADD NEW ANSWER TO THE QUESTION
   addWrongAnswer = () => {
-    let answers = this.state.question.answers;
-    answers.push("");
-    this.setState(prevState => ({
-      question: {
-        ...prevState.question,
-        answers: answers
-      }
-    }));
+    let answer = {
+      id: this.props.index, //MI SERVE PER PRENDERMI POI DAL REDUCER L'INDEX DI OGNI QUESTION
+      key: this.state.counter, //MI SERVE PER PRENDERMI DAL REDUCER LA POSIZIONE DELLA ANSWER DAL REDUCER
+      value: ""
+    };
+    this.setState({
+      answers: [...this.state.answers, answer]
+    });
+    this.setState({ counter: (this.state.counter += 1) });
+  };
+
+  //UPLOAD IMAGE IN REDUX
+  uploadImage = async file => {
+    console.log(file.target.files[0]);
+    var formData = new FormData();
+    formData.append("question_images", file.target.files[0]);
+    for (var key of formData.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
+    this.props.uploadImage(formData, this.props.index);
   };
 
   render() {
     return (
       <>
         <div className="row">
+          <div className="col-sm-12 col-lg-12 text-center mb-5">
+            <p className="">
+              <strong>Upload an Image: </strong>
+            </p>
+            {this.props.quiz.questions[this.props.index].question.image !==
+            "" ? (
+              <img
+                src={this.props.quiz.questions[this.props.index].question.image}
+                alt="image question"
+                width="150px"
+              />
+            ) : (
+              <img
+                src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
+                alt="empty image"
+                width="150px"
+              />
+            )}
+            <input
+              type="file"
+              name="pic"
+              accept=".jpg, .png, .jpeg"
+              onChange={e => this.uploadImage(e)}
+            />
+          </div>
           <div className="col-sm-12 col-lg-6 align-self-end">
-            <label>Question </label>
+            <label>Question {this.props.index + 1} </label>
             <input
               className="d-inline"
               name="title"
               type="text"
               value={this.state.inputText}
-              onChange={e => this.setState({ inputText: e.target.value })}
-            />
-          </div>
-          <div className="col-sm-12 col-lg-6 text-center mb-5">
-            <img
-              src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
-              className=""
-              width="150px"
+              onChange={e => this.updateTitle(e)}
             />
           </div>
           <div className="col-sm-12 col-lg-6">
+            <p>
+              <strong>Answers List</strong>
+            </p>
             <p className="d-inline pl-4">Correct</p>
             <input
               className="d-inline"
@@ -107,33 +134,23 @@ class QuizFrom extends Component {
               onChange={e => this.updateCorrectAnswer(e)}
             />
           </div>
-          {this.state.question.answers.map((answer, index) => {
+          {this.state.answers.map((answer, index) => {
             return (
               <div className="col-sm-12 col-lg-6" key={index}>
                 <p className="d-inline pl-4">Wrong</p>
                 <input
                   className="d-inline"
-                  name={index}
+                  id={this.props.index}
                   type="text"
-                  onChange={e => this.updateWrongAnswer(e)}
+                  onChange={e => this.updateWrongAnswer(e, index + 1)}
                 />
               </div>
             );
           })}
         </div>
-        <div className="d-inline mr-4">
-          <button className="btn btn-primary" onClick={this.SubmitQuestion}>
-            + Add to list
-          </button>
-        </div>
         <div className="d-inline">
           <button className="btn btn-primary" onClick={this.addWrongAnswer}>
             add wrong answer
-          </button>
-        </div>
-        <div className="">
-          <button className="btn btn-primary" onClick={this.showstore}>
-            Test reduxquiz
           </button>
         </div>
         <hr />
