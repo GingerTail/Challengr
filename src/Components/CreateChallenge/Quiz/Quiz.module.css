@@ -1,7 +1,9 @@
 .quizContainer {
-  width: 100%;
   opacity: 0;
-  transition: opacity 1s ease-out 2s;
+  transition: opacity 1s ease-out;
+}
+.quizformContainer {
+  background-color: #eee;
 }
 
 .quizContainer.fadeIn {
@@ -15,7 +17,20 @@
 }
 
 input {
-  width: 100%;
+  border-radius: 2px;
+  border: 1px solid grey;
+}
+
+.inputUpload {
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  padding-left: 2.5rem;
+}
+
+.disabled-link {
+  pointer-events: none;
 }
 
 /* to add to global scope 

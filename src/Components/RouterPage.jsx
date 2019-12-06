@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
+import Quiz from "./CreateChallenge/Quiz/Quiz";
+import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
+import Demo from "./CreateChallenge/Demo/Demo";
+import Summary from "./CreateChallenge/Summary/Summary";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -43,7 +47,15 @@ class RouterPage extends Component {
       <Router>
         <Navbar />
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/create" component={CreateChallenge} />
+        <Route path="/create/" component={CreateChallenge} />
+        <Route exact path="/create/quiz" component={Quiz} />
+        <Route exact path="/create/demo" component={Demo} />
+        <Route
+          exact
+          path="/create/generalsettings"
+          component={GeneralSettings}
+        />
+        <Route exact path="/create/summary" component={Summary} />
       </Router>
     );
   }

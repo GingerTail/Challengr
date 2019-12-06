@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "../Quiz/Quiz.module.css";
+import style from "../Quiz/Quiz.module.css";
 import { uploadImageQuiz } from "../../../Actions/CreateChallengeActions";
 
 const mapStateToProps = reduxStore => {
@@ -86,8 +86,8 @@ class QuizFrom extends Component {
   render() {
     return (
       <>
-        <div className="row">
-          <div className="col-sm-12 col-lg-12 text-center mb-5">
+        <div className={`row ${style.quizformContainer}`}>
+          <div className="col-sm-12 col-lg-6 text-center mb-5">
             <p className="">
               <strong>Upload an Image: </strong>
             </p>
@@ -96,62 +96,72 @@ class QuizFrom extends Component {
               <img
                 src={this.props.quiz.questions[this.props.index].question.image}
                 alt="image question"
-                width="150px"
+                width="300px"
               />
             ) : (
               <img
                 src="http://telugukshatriyamatrimony.com/img/no_image_startup.png"
                 alt="empty image"
-                width="150px"
+                width="300px"
               />
             )}
             <input
+              className={style.inputUpload}
               type="file"
               name="pic"
               accept=".jpg, .png, .jpeg"
               onChange={e => this.uploadImage(e)}
             />
           </div>
-          <div className="col-sm-12 col-lg-6 align-self-end">
-            <label>Question {this.props.index + 1} </label>
-            <input
-              className="d-inline"
-              name="title"
-              type="text"
-              value={this.state.inputText}
-              onChange={e => this.updateTitle(e)}
-            />
-          </div>
           <div className="col-sm-12 col-lg-6">
-            <p>
-              <strong>Answers List</strong>
-            </p>
-            <p className="d-inline pl-4">Correct</p>
-            <input
-              className="d-inline"
-              index="correct"
-              type="text"
-              onChange={e => this.updateCorrectAnswer(e)}
-            />
-          </div>
-          {this.state.answers.map((answer, index) => {
-            return (
-              <div className="col-sm-12 col-lg-6" key={index}>
-                <p className="d-inline pl-4">Wrong</p>
+            <div className="row">
+              <div className="col-12">
+                <label>Question {this.props.index + 1} </label>
                 <input
-                  className="d-inline"
-                  id={this.props.index}
+                  className="d-block"
+                  name="title"
                   type="text"
-                  onChange={e => this.updateWrongAnswer(e, index + 1)}
+                  value={this.state.inputText}
+                  onChange={e => this.updateTitle(e)}
                 />
               </div>
-            );
-          })}
-        </div>
-        <div className="d-inline">
-          <button className="btn btn-primary" onClick={this.addWrongAnswer}>
-            add wrong answer
-          </button>
+              <div className="col-12">
+                <p>
+                  <strong>Answers List</strong>
+                </p>
+              </div>
+              <div className="col-4 mt-2">
+                <p className="d-inline pl-4 ">Correct</p>
+                <input
+                  className="d-inline"
+                  index="correct"
+                  type="text"
+                  onChange={e => this.updateCorrectAnswer(e)}
+                />
+              </div>
+              {this.state.answers.map((answer, index) => {
+                return (
+                  <div className="col-4 mt-2" key={index}>
+                    <p className="d-inline pl-4">Wrong</p>
+                    <input
+                      className="d-inline"
+                      id={this.props.index}
+                      type="text"
+                      onChange={e => this.updateWrongAnswer(e, index + 1)}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <button
+              className="btn btn-primary mt-4 mb-4 ml-2"
+              onClick={this.addWrongAnswer}
+            >
+              add wrong answer
+            </button>
+          </div>
         </div>
         <hr />
       </>

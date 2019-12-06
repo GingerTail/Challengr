@@ -36,14 +36,13 @@ class DropdownMenu extends Component {
   };
   render() {
     return (
-      <>
-        <h1>TEST</h1>
+      <div className="mb-3">
         <Select
           onChange={this.handleChange}
           autoFocus={true}
           options={options}
         />
-      </>
+      </div>
     );
   }
 }
