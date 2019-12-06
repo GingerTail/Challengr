@@ -8,6 +8,7 @@ import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
 import Demo from "./CreateChallenge/Demo/Demo";
 import Summary from "./CreateChallenge/Summary/Summary";
+import MainPage from "./QuizPlay/MainPage"
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -56,6 +57,7 @@ class RouterPage extends Component {
           component={GeneralSettings}
         />
         <Route exact path="/create/summary" component={Summary} />
+        <Route path="/playQuiz/:id" component={MainPage}/>
       </Router>
     );
   }
