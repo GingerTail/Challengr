@@ -4,6 +4,13 @@ import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
+import DemoProject from "./DemoProject/DemoProject";
+import login from "./Login/Login";
+import FreeUser from "./FreeUser/FreeUser";
+
+
+
+
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -44,6 +51,9 @@ class RouterPage extends Component {
         <Navbar />
         <Route exact path="/" component={Homepage} />
         <Route exact path="/create" component={CreateChallenge} />
+        <Route exact path="/demo" component={DemoProject} />
+        <Route exact path="/login" component={login} />
+        <Route exact path="/FreeUser" component={FreeUser} />
       </Router>
     );
   }

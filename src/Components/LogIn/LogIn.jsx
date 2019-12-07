@@ -1,7 +1,7 @@
-import React from 'react';
-import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBModalFooter, MDBIcon } from 'mdbreact';
+import React from './node_modules/react';
+import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBModalFooter, MDBIcon } from './node_modules/mdbreact';
 
-class LogIn extends React.Component {
+class login extends React.Component {
 
     render() {
         const smallStyle = { fontSize: '1rem' }
@@ -38,4 +38,4 @@ class LogIn extends React.Component {
     }
 }
 
-export default LogIn;
+export default login;
