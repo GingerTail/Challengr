@@ -4,12 +4,19 @@ import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
+import DemoProject from "./DemoProject/DemoProject";
+import login from "./Login/Login";
+import FreeUser from "./FreeUser/FreeUser";
 import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
 import Demo from "./CreateChallenge/Demo/Demo";
 import Summary from "./CreateChallenge/Summary/Summary";
 import MainPage from "./QuizPlay/MainPage"
 import displayChallenge from "./StartChallenge/test";
+
+
+
+
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -49,7 +56,6 @@ class RouterPage extends Component {
       <Router>
         <Navbar />
         <Route exact path="/" component={Homepage} />
-        <Route path="/create/" component={CreateChallenge} />
         <Route exact path="/create/quiz" component={Quiz} />
         <Route exact path="/create/demo" component={Demo} />
         <Route
@@ -60,6 +66,10 @@ class RouterPage extends Component {
         <Route exact path="/create/summary" component={Summary} />
         <Route path="/playQuiz/:id" component={MainPage}/>
         <Route exact path="/challenge" component={displayChallenge} />
+        <Route exact path="/create" component={CreateChallenge} />
+        <Route exact path="/demo" component={DemoProject} />
+        <Route exact path="/login" component={login} />
+        <Route exact path="/FreeUser" component={FreeUser} />
       </Router>
     );
   }
