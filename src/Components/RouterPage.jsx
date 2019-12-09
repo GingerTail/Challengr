@@ -5,7 +5,7 @@ import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
 import DemoProject from "./DemoProject/DemoProject";
-import login from "./Login/Login";
+import login from "./login/logIn";
 import FreeUser from "./FreeUser/FreeUser";
 import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
@@ -64,7 +64,7 @@ class RouterPage extends Component {
           component={GeneralSettings}
         />
         <Route exact path="/create/summary" component={Summary} />
-        <Route path="/playQuiz/:id" component={MainPage}/>
+        <Route path="/playQuiz/:id" component={MainPage} />
         <Route exact path="/challenge" component={displayChallenge} />
         <Route exact path="/create" component={CreateChallenge} />
         <Route exact path="/demo" component={DemoProject} />
