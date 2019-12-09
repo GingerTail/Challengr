@@ -21,16 +21,12 @@ class DropdownMenu extends Component {
     optionsList: []
   };
   handleChange = selectedOption => {
-    console.log("option selected" + selectedOption);
     let check = this.state.optionsList.includes(selectedOption.value);
-    console.log(check);
     if (check) {
-      console.log("language already selected");
     } else {
       this.setState({
         optionsList: this.state.optionsList.concat(selectedOption.value)
       });
-      console.log("language added" + this.state.optionsList);
       this.props.addLanguage(selectedOption.value);
     }
   };
