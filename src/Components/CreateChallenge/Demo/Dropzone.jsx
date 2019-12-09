@@ -3,20 +3,26 @@ import { useDropzone } from "react-dropzone";
 import { useDispatch } from "react-redux";
 import "./demo.css";
 
+const uploadPdf = async file => {
+  var formData = new FormData();
+  formData.append("demo_pdf", file);
+  return formData;
+};
+
 function MyDropzone() {
   const dispatch = useDispatch();
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback(async acceptedFiles => {
     // Do something with the files
     if (acceptedFiles[0].type !== "application/pdf") {
       acceptedFiles.splice(0, 1);
-      console.log("invalid file");
       validateFile = false;
       dispatch({ type: "VALIDATE_FILE", payload: validateFile });
     } else {
       Pdf = acceptedFiles[0];
       validateFile = true;
-      console.log(Pdf);
-      dispatch({ type: "UPLOAD_PDF", payload: Pdf });
+      const formData = await uploadPdf(Pdf);
+      dispatch({ type: "UPLOAD_PDF_FORMDATA", payload: formData });
+      dispatch({ type: "UPLOAD_PDF_RAW", payload: Pdf });
       dispatch({ type: "VALIDATE_FILE", payload: validateFile });
     }
   }, []);

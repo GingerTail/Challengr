@@ -6,6 +6,8 @@ import quizReducer from "../Reducers/quizReducer";
 import uploadReducer from "../Reducers/uploadReducer";
 import validateReducer from "../Reducers/validateReducer";
 import generalSettingsReducer from "../Reducers/generalSettingReducer";
+import demoReducer from "../Reducers/demoReducer";
+import pdfRawReducer from "../Reducers/pdfRawReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -47,7 +49,8 @@ const initialState = {
     pdfLink: "",
     author: ""
   },
-  pdf: [],
+  pdfFormData: {},
+  pdfRaw: {},
   validate: null
 };
 
@@ -55,7 +58,9 @@ const bigReducer = combineReducers({
   challengeList: challengeListReducer,
   filter: filterReducer,
   quiz: quizReducer,
-  pdf: uploadReducer,
+  demo: demoReducer,
+  pdfFormData: uploadReducer,
+  pdfRaw: pdfRawReducer,
   validate: validateReducer,
   generalSettings: generalSettingsReducer
 });

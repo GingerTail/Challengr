@@ -42,7 +42,7 @@ class Quiz extends Component {
   allowLink = event => {
     if (this.props.quiz.questions.length <= 4) {
       event.preventDefault();
-    } else console.log("works");
+    }
   };
 
   render() {

@@ -80,6 +80,19 @@ class ChallengesList extends Component {
     } else return [1];
   };
 
+  getDifficulty = difficulty => {
+    switch (difficulty) {
+      case 1:
+        return "Easy";
+      case 2:
+        return "Normal";
+      case 3:
+        return "Hard";
+      default:
+        return "NA";
+    }
+  };
+
   render() {
     let pagesArray = this.getPagination();
     return (
@@ -118,7 +131,8 @@ class ChallengesList extends Component {
                               <p>Upvotes: </p>
 
                               <p>
-                                <strong>Difficulty:</strong> Easy
+                                <strong>Difficulty: </strong>
+                                {this.getDifficulty(singleChallenge.difficulty)}
                               </p>
                             </div>
                           </div>

@@ -8,6 +8,13 @@ const mapStateToProps = reduxStore => {
   return reduxStore;
 };
 
+const mapDispatchToProps = dispatch => ({
+  getDescription: text =>
+    dispatch({
+      type: "ADD_DEMO_DESCRIPTION",
+      payload: text
+    })
+});
 class Demo extends Component {
   constructor(props) {
     super(props);
@@ -17,14 +24,15 @@ class Demo extends Component {
     };
   }
 
-  componentDidUpdate = () => {
-    console.log(this.props.validate);
-  };
-
   allowLink = event => {
     if (this.props.quiz.questions.length <= 4) {
       event.preventDefault();
-    } else console.log("works");
+    }
+  };
+
+  uploadDemoDescription = () => {
+    const text = document.querySelector("#exampleFormControlTextarea1").value;
+    this.props.getDescription(text);
   };
 
   render() {
@@ -65,6 +73,7 @@ class Demo extends Component {
               Previous
             </Link>
             <Link
+              onClick={this.uploadDemoDescription}
               to="/create/generalsettings"
               /* onClick={event => this.allowLink(event)} */
               className="btn btn-primary disabled-link ml-1"
@@ -78,4 +87,4 @@ class Demo extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Demo);
+export default connect(mapStateToProps, mapDispatchToProps)(Demo);
