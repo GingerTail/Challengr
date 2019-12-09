@@ -38,8 +38,8 @@ class Demo extends Component {
   render() {
     return (
       <>
-        <h3 className="text-center">Demo</h3>
         <div className="demo-container mb-4">
+          <h3 className="text-center">Demo</h3>
           <div className="row">
             <div className="col-12 text-center">
               <label>Upload PDF file: </label>
@@ -66,17 +66,14 @@ class Demo extends Component {
             </div>
           </div>
           <div className="text-center">
-            <Link
-              to="/create/quiz"
-              className="btn btn-primary disabled-link mr-1"
-            >
+            <Link to="/create/quiz" className="custom-btn disabled-link mr-1">
               Previous
             </Link>
             <Link
               onClick={this.uploadDemoDescription}
               to="/create/generalsettings"
               /* onClick={event => this.allowLink(event)} */
-              className="btn btn-primary disabled-link ml-1"
+              className="custom-btn disabled-link ml-1"
             >
               Next
             </Link>

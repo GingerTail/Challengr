@@ -48,12 +48,12 @@ class Quiz extends Component {
   render() {
     return (
       <>
-        <h3 className="text-center">Quiz</h3>
         <div
           className={`${style.quizContainer} container-fluid text-left mb-5 ${
             this.state.isLoaded ? style.fadeIn : ""
           }`}
         >
+          <h3 className="text-center">Quiz</h3>
           <div className="row">
             {this.props.quiz.questions.map((question, index) => {
               return (
@@ -64,7 +64,7 @@ class Quiz extends Component {
             })}
             <div className="col-12 text-center">
               <button
-                className="btn btn-primary float-left"
+                className="custom-btn float-left"
                 onClick={this.AddQuestion}
               >
                 Add Question
@@ -72,7 +72,7 @@ class Quiz extends Component {
               <Link
                 to="/create/demo"
                 /*   onClick={event => this.allowLink(event)} */
-                className="btn btn-primary disabled-link"
+                className="custom-btn disabled-link"
               >
                 Next
               </Link>

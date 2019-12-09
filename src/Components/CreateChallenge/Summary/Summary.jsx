@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { handleCreateChallengr } from "../../../Actions/CreateChallengeActions";
 import { handleGetPdf } from "../../../Actions/CreateChallengeActions";
 import { handleGetDemo } from "../../../Actions/CreateChallengeActions";
+import "./summary.css";
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
@@ -33,7 +34,7 @@ class Summary extends Component {
   render() {
     return (
       <>
-        <div className="summary-container text-left">
+        <div className="summary-container text-left px-4">
           <div className="row">
             <div className="col-12" id="general-section">
               <h3 className="text-center">General Settings</h3>
@@ -91,14 +92,11 @@ class Summary extends Component {
             <div className="col-12 mt-4 text-center">
               <Link
                 to="/create/generalsettings"
-                className="btn btn-primary disabled-link mr-1"
+                className="custom-btn disabled-link mr-1"
               >
                 Previous
               </Link>
-              <button
-                className="btn btn-primary"
-                onClick={this.submitChallenge}
-              >
+              <button className="custom-btn" onClick={this.submitChallenge}>
                 Submit
               </button>
             </div>
