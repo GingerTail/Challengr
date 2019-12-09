@@ -84,7 +84,7 @@ class ChallengesList extends Component {
     let pagesArray = this.getPagination();
     return (
       <>
-        <Link className="btn btn-primary mb-2" to="create/quiz">
+        <Link className="custom-btn mb-5" to="create/quiz">
           + Add Challenge
         </Link>
         <div className="list-container">
@@ -95,7 +95,7 @@ class ChallengesList extends Component {
                   {this.props.challengeList.challenges.map(
                     (singleChallenge, index) => {
                       return (
-                        <div className="card-challenge-container">
+                        <div className="card-challenge-container mt-1">
                           <div className="row">
                             <div className="col-12 col-lg-10">
                               <p>
@@ -131,7 +131,7 @@ class ChallengesList extends Component {
                       <input
                         onClick={() => this.handleChangePage(el)}
                         type="button"
-                        className="btn btn-primary px-0 py-0 d-block"
+                        className="custom-btn px-0 py-0 d-block"
                         value={el}
                       />
                     ))}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../FilterNav/filternav.css";
 import { connect } from "react-redux";
 
-
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
@@ -101,7 +100,7 @@ class FilterNav extends Component {
                   value="javascript"
                   onClick={event => this.EditFilter(event)}
                 />{" "}
-               <p className="d-inline">Javascript</p>
+                <p className="d-inline">Javascript</p>
                 <br />
                 <input
                   type="checkbox"
@@ -194,7 +193,7 @@ class FilterNav extends Component {
                 <br />
               </form>
             </div>
-            <button className="btn btn-primary" onClick={this.SubmitFilter}>
+            <button className="custom-btn" onClick={this.SubmitFilter}>
               Search
             </button>
           </div>

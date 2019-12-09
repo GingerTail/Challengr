@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./navbar.css";
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className=" w-100 navbar navbar-light bg-light">
+      <nav className=" w-100 fixed-top navbar bg-navbar">
         <a className="navbar-brand" href="/">
           <img
             src="/docs/4.3/assets/brand/bootstrap-solid.svg"
@@ -27,7 +28,7 @@ export default class Navbar extends Component {
           />
           Challengr
         </a>
-        <div className="float-right">
+        <div className="float-right link-box">
           {this.state.login == false ? (
             <>
               <a href="#" className="mr-2">

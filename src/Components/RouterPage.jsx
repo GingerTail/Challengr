@@ -11,7 +11,7 @@ import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
 import Demo from "./CreateChallenge/Demo/Demo";
 import Summary from "./CreateChallenge/Summary/Summary";
-import MainPage from "./QuizPlay/MainPage"
+import MainPage from "./QuizPlay/MainPage";
 import displayChallenge from "./StartChallenge/test";
 
 

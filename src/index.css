@@ -1,4 +1,5 @@
 body {
+  background-color: #eee;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -10,4 +11,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.custom-btn {
+  background-color: #222629;
+  border: 2px solid transparent;
+  color: #3cc47c;
+  border-radius: 2px;
+  padding: 0.3rem;
+  transition: border-color 0.3s ease-out;
+}
+.custom-btn:hover {
+  background-color: #141618;
+  color: #30945e;
+  border-color: #69ffaf98;
 }

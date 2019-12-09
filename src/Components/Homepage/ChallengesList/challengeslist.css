@@ -1,10 +1,12 @@
-.list-container{
-    background-color: #eee;
-    padding:0.5rem;
+.list-container {
+  background-color: #222629;
+  padding: 0.5rem;
 }
 
-.card-challenge-container{
-    background-color:white;
-    padding:0.5rem;
-    margin-bottom:1rem;
+.card-challenge-container {
+  background-color: #eee;
+  border-radius: 0px 2px 2px 0px;
+
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
