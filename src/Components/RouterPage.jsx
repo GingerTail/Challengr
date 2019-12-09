@@ -5,7 +5,7 @@ import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
 import DemoProject from "./DemoProject/DemoProject";
-import login from "./login/logIn";
+import login from "./LogIn/LogIn";
 import FreeUser from "./FreeUser/FreeUser";
 import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
@@ -13,10 +13,6 @@ import Demo from "./CreateChallenge/Demo/Demo";
 import Summary from "./CreateChallenge/Summary/Summary";
 import MainPage from "./QuizPlay/MainPage";
 import displayChallenge from "./StartChallenge/test";
-
-
-
-
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
