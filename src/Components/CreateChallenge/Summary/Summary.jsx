@@ -29,6 +29,7 @@ class Summary extends Component {
     setTimeout(() => {
       this.props.createChallengr(this.props.generalSettings);
     }, 2000);
+    window.location = "/redirect";
   };
 
   render() {

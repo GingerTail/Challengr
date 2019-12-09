@@ -97,7 +97,7 @@ class ChallengesList extends Component {
     let pagesArray = this.getPagination();
     return (
       <>
-        <Link className="custom-btn mb-5" to="create/quiz">
+        <Link className="custom-btn mb-5" to="create">
           + Add Challenge
         </Link>
         <div className="list-container">

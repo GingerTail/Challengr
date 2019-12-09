@@ -70,9 +70,16 @@ class Quiz extends Component {
                 Add Question
               </button>
               <Link
+                to="/create"
+                /*   onClick={event => this.allowLink(event)} */
+                className="custom-btn disabled-link mr-1"
+              >
+                Previous
+              </Link>
+              <Link
                 to="/create/demo"
                 /*   onClick={event => this.allowLink(event)} */
-                className="custom-btn disabled-link"
+                className="custom-btn disabled-link ml-1"
               >
                 Next
               </Link>

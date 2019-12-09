@@ -22,6 +22,7 @@ code {
   transition: border-color 0.3s ease-out;
 }
 .custom-btn:hover {
+  text-decoration: none;
   background-color: #141618;
   color: #30945e;
   border-color: #69ffaf98;
