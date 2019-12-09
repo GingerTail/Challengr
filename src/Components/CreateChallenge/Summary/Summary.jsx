@@ -24,7 +24,7 @@ class Summary extends Component {
     this.props.getPdfLink(this.props.pdfFormData);
     setTimeout(() => {
       this.props.getDemoContent(this.props.demo);
-    }, 1000);
+    }, 500);
     setTimeout(() => {
       this.props.createChallengr(this.props.generalSettings);
     }, 2000);
