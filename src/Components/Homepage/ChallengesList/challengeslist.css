@@ -2,6 +2,23 @@
   background-color: #222629;
   padding: 0.5rem;
 }
+.create-btn {
+  background-color: #222629;
+  border: 2px solid transparent;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  color: #3cc47c;
+  border-radius: 2px;
+  padding: 0.3rem;
+  transition: color 0.3s ease-out;
+  transition: border-color 0.3s ease-out;
+}
+.create-btn:hover {
+  text-decoration: none;
+  border-color: #69ffaf98;
+  color: #4ceb96;
+}
 
 .card-challenge-container {
   background-color: #eee;

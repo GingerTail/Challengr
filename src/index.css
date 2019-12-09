@@ -19,11 +19,11 @@ code {
   color: #3cc47c;
   border-radius: 2px;
   padding: 0.3rem;
-  transition: border-color 0.3s ease-out;
+  transition: border-color 0.3s ease-out, color 0.3s ease-out;
 }
 .custom-btn:hover {
   text-decoration: none;
   background-color: #141618;
-  color: #30945e;
+  color: #4ceb96;
   border-color: #69ffaf98;
 }
