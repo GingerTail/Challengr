@@ -3,10 +3,20 @@
   padding: 0.5rem;
 }
 
+.challenge-link {
+  color: #121212;
+}
+.challenge-link:hover {
+  text-decoration: none;
+  color: black;
+}
 .card-challenge-container {
   background-color: #eee;
   border-radius: 0px 2px 2px 0px;
-
   padding: 0.5rem;
   margin-bottom: 1rem;
+  transition: background-color 0.3s ease-in;
+}
+.card-challenge-container:hover {
+  background-color: rgb(211, 211, 211);
 }

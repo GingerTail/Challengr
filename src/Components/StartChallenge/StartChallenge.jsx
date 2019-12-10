@@ -14,24 +14,40 @@ import {
   Jumbotron
 } from "reactstrap";
 import { InputGroup, InputGroupAddon, Input } from "reactstrap";
-import "./startchallenge.css";
+import "./StartChallenge.css";
 import classnames from "classnames";
 import Introduction from "./Introduction/Introduction";
 import { useSelector } from "react-redux";
 
+let started = false;
+let demo = false;
+let quiz = false;
 export const StartChallenge = props => {
   const store = useSelector(state => state.start);
-  let started = false;
+
+  //CHECK IF THE CHALLENGE IS STARTED, IF YES, GO TO THE NEXT TAB
   useEffect(() => {
-    if (started == false) {
+    if (started === false) {
       if (store.tab === "2") {
         if (activeTab !== store.tab) setActiveTab("2");
+        started = true;
       } else {
         if (activeTab !== store.tab) setActiveTab("1");
       }
     }
-    started = true;
   });
+  //CHECK IF THE DEMO OR QUIZ EXIST, IF YES, DISPLAY THEIR TAB
+  useEffect(() => {
+    if (store.challenge.length >= -1) {
+      quiz = store.challenge[0].content.some(
+        content => content["resourceType"] === "quizId"
+      );
+      demo = store.challenge[0].content.some(
+        content => content["resourceType"] === "demoId"
+      );
+    }
+    console.log(quiz + "demo: " + demo);
+  }, []);
 
   const [activeTab, setActiveTab] = useState("1");
 
@@ -53,29 +69,53 @@ export const StartChallenge = props => {
               toggle("1");
             }}
           >
-            Introduction
+            <button className="tab-btn">Introduction</button>
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "2" })}
-            onClick={() => {
-              toggle("2");
-            }}
-          >
-            Quiz
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "3" })}
-            onClick={() => {
-              toggle("3");
-            }}
-          >
-            Demo Project
-          </NavLink>
-        </NavItem>
+        {quiz === true ? (
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === "2" })}
+              onClick={() => {
+                toggle("2");
+              }}
+            >
+              <button className="tab-btn">Quiz</button>
+            </NavLink>
+          </NavItem>
+        ) : (
+          ""
+        )}
+        {demo === true && (
+          <NavItem>
+            <NavLink
+              className={
+                quiz === true
+                  ? classnames({ active: activeTab === "3" })
+                  : classnames({ active: activeTab === "2" })
+              }
+              onClick={() => {
+                quiz === true ? toggle("3") : toggle("2");
+              }}
+            >
+              <button className="tab-btn">Demo</button>
+            </NavLink>
+          </NavItem>
+        )}
+        {demo === true || quiz === true ? (
+          <NavItem>
+            <NavLink
+              className={classnames({ active: activeTab === "4" })}
+              onClick={() => {
+                toggle("4");
+              }}
+            >
+              <button className="tab-btn">Submit</button>
+            </NavLink>
+          </NavItem>
+        ) : (
+          ""
+        )}
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
@@ -85,14 +125,14 @@ export const StartChallenge = props => {
             </Col>
           </Row>
         </TabPane>
-        <TabPane tabId="2">
+        <TabPane tabId={quiz === true ? "2" : "0"}>
           <Row>
             <Col sm="12">
               <h4>Quiz</h4>
             </Col>
           </Row>
         </TabPane>
-        <TabPane tabId="3">
+        <TabPane tabId={quiz === true ? "3" : "2"}>
           <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
               <div>
@@ -138,6 +178,13 @@ export const StartChallenge = props => {
                   </p>
                 </Jumbotron>
               </div>
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane tabId="4">
+          <Row>
+            <Col sm="12">
+              <h4>Submit</h4>
             </Col>
           </Row>
         </TabPane>

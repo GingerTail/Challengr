@@ -61,7 +61,7 @@ class RouterPage extends Component {
         <Route exact path="/create/summary" component={Summary} />
         <Route path="/playQuiz/:id" component={MainPage} />
         <Route exact path="/create" component={CreateChallenge} />
-        <Route exact path="/demo" component={StartChallenge} />
+        <Route exact path="/start/:id" component={StartChallenge} />
         <Route exact path="/login" component={login} />
         <Route exact path="/FreeUser" component={FreeUser} />
       </Router>
