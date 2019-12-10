@@ -1,186 +1,233 @@
-import React from "react";
-import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import React, { Component } from "react";
+import "./FreeUser.css";
+import { Link } from 'react-router-dom';
 
-class FreeUser extends React.Component {
-    state = {
-        fname: "",
-        lname: "",
-        email: "",
-        country: "",
-        state: "",
-        zip: ""
+
+
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
+
+const formValid = ({ formErrors, ...rest }) => {
+    let valid = true;
+
+    // validate form errors being empty
+    Object.values(formErrors).forEach(val => {
+        val.length > 0 && (valid = false);
+    });
+
+    // validate the form was filled out
+    Object.values(rest).forEach(val => {
+        val === null && (valid = false);
+    });
+
+    return valid;
+};
+
+class FreeUser extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstName: null,
+            lastName: null,
+            userName: null,
+            gitHub: null,
+            email: null,
+            password: null,
+            formErrors: {
+                firstName: "",
+                lastName: "",
+                userName: "",
+                gitHub: "",
+                email: "",
+                password: ""
+            }
+        };
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+
+        if (formValid(this.state)) {
+            console.log(`
+          --SUBMITTING--
+          First Name: ${this.state.firstName}
+          Last Name: ${this.state.lastName}
+          Username: ${this.state.userName}
+          Github: ${this.state.gitHub}
+          Email: ${this.state.email}
+          Password: ${this.state.password}
+        `);
+        } else {
+            console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+        }
     };
 
-    submitHandler = event => {
-        event.preventDefault();
-        event.target.className += " was-validated";
-    };
+    handleChange = e => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        let formErrors = { ...this.state.formErrors };
 
-    changeHandler = event => {
-        this.setState({ [event.target.name]: event.target.value });
+        switch (name) {
+
+
+            case "firstName":
+                formErrors.firstName =
+                    value.length < 3 ? "minimum 3 characters required" : "";
+                break;
+            case "lastName":
+                formErrors.lastName =
+                    value.length < 3 ? "minimum 3 characters required" : "";
+                break;
+            case "userName":
+                formErrors.userName =
+                    value.length < 3 ? "minimum 3 characters required" : "";
+                break;
+            case "gitHub":
+                formErrors.gitHub =
+                    value.length < 3 ? "minimum 3 characters required" : "";
+                break;
+            case "email":
+                formErrors.email = emailRegex.test(value)
+                    ? ""
+                    : "invalid email address";
+                break;
+            case "password":
+                formErrors.password =
+                    value.length < 6 ? "minimum 6 characters required" : "";
+                break;
+            default:
+                break;
+        }
+
+        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
     };
 
     render() {
+        const { formErrors } = this.state;
+
         return (
+            <div className="container-fluid" style={{ overflow: "hidden" }}>
+                <div className="row">
 
+                    {/* <div className="col-md-10 offset=md-1">
+                        <div className="row"> */}
+                    <div className="col-md-5 register-left offset-1">
+                        <h1>Free User</h1>
+                        <hr />
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            Tempora fuga eos, vitae optio ratione nemo distinctio nulla soluta accusantium exercitationem culpa nesciunt
+                                    repudiandae officia id maiores impedit incidunt ut repellat!</p>
+                    </div>
+                    <div className="col-md-6 register-right">
 
-            <div>
-                <form
-                    className="needs-validation"
-                    onSubmit={this.submitHandler}
-                    noValidate
-                >
-                    <MDBRow>
-                        <MDBCol md="4" className="mb-3">
-                            <label
-                                htmlFor="defaultFormRegisterNameEx"
-                                className="grey-text"
-                            >
-                                First name
-              </label>
-                            <input
-                                value={this.state.fname}
-                                name="fname"
-                                onChange={this.changeHandler}
-                                type="text"
-                                id="defaultFormRegisterNameEx"
-                                className="form-control"
-                                placeholder="First name"
-                                required
-                            />
-                            <div className="valid-feedback">Looks good!</div>
-                        </MDBCol>
-                        <MDBCol md="4" className="mb-3">
-                            <label
-                                htmlFor="defaultFormRegisterEmailEx2"
-                                className="grey-text"
-                            >
-                                Last name
-              </label>
-                            <input
-                                value={this.state.lname}
-                                name="lname"
-                                onChange={this.changeHandler}
-                                type="text"
-                                id="defaultFormRegisterEmailEx2"
-                                className="form-control"
-                                placeholder="Last name"
-                                required
-                            />
-                            <div className="valid-feedback">Looks good!</div>
-                        </MDBCol>
-                        <MDBCol md="4" className="mb-3">
-                            <label
-                                htmlFor="defaultFormRegisterConfirmEx3"
-                                className="grey-text"
-                            >
-                                Email
-              </label>
-                            <input
-                                value={this.state.email}
-                                onChange={this.changeHandler}
-                                type="email"
-                                id="defaultFormRegisterConfirmEx3"
-                                className="form-control"
-                                name="email"
-                                placeholder="Your Email address"
-                            />
-                            <small id="emailHelp" className="form-text text-muted">
-                                We'll never share your email with anyone else.
-              </small>
-                        </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                        <MDBCol md="4" className="mb-3">
-                            <label
-                                htmlFor="defaultFormRegisterPasswordEx4"
-                                className="grey-text"
-                            >
-                                Country
-              </label>
-                            <input
-                                value={this.state.country}
-                                onChange={this.changeHandler}
-                                type="text"
-                                id="defaultFormRegisterPasswordEx4"
-                                className="form-control"
-                                name="Country"
-                                placeholder="Country"
-                                required
-                            />
-                            <div className="invalid-feedback">
-                                Please provide a valid Country.
-              </div>
-                            <div className="valid-feedback">Looks good!</div>
-                        </MDBCol>
-                        <MDBCol md="4" className="mb-3">
-                            <label
-                                htmlFor="defaultFormRegisterPasswordEx4"
-                                className="grey-text"
-                            >
-                                State
-              </label>
-                            <input
-                                value={this.state.state}
-                                onChange={this.changeHandler}
-                                type="text"
-                                id="defaultFormRegisterPasswordEx4"
-                                className="form-control"
-                                name="state"
-                                placeholder="State"
-                                required
-                            />
-                            <div className="invalid-feedback">
-                                Please provide a valid state.
-              </div>
-                            <div className="valid-feedback">Looks good!</div>
-                        </MDBCol>
-                        <MDBCol md="4" className="mb-3">
-                            <label
-                                htmlFor="defaultFormRegisterPasswordEx4"
-                                className="grey-text"
-                            >
-                                Zip
-              </label>
-                            <input
-                                value={this.state.zip}
-                                onChange={this.changeHandler}
-                                type="text"
-                                id="defaultFormRegisterPasswordEx4"
-                                className="form-control"
-                                name="zip"
-                                placeholder="Zip"
-                                required
-                            />
-                            <div className="invalid-feedback">
-                                Please provide a valid zip.
-              </div>
-                            <div className="valid-feedback">Looks good!</div>
-                        </MDBCol>
-                    </MDBRow>
-                    <MDBCol md="4" className="mb-3">
-                        <div className="custom-control custom-checkbox pl-3">
-                            <input
-                                className="custom-control-input"
-                                type="checkbox"
-                                value=""
-                                id="invalidCheck"
-                                required
-                            />
-                            <label className="custom-control-label" htmlFor="invalidCheck">
-                                Agree to terms and conditions
-              </label>
-                            <div className="invalid-feedback">
-                                You must agree before submitting.
-              </div>
+                        <div className="wrapper">
+                            <div className="form-wrapper">
+                                <h1>Register</h1>
+
+                                <hr></hr>
+
+                                <form onSubmit={this.handleSubmit} noValidate>
+                                    <div className="firstName">
+                                        <label htmlFor="firstName">First Name</label>
+                                        <input
+                                            className={formErrors.firstName.length > 0 ? "error" : null}
+                                            placeholder="First Name"
+                                            type="text"
+                                            name="firstName"
+                                            noValidate
+                                            onChange={this.handleChange}
+                                        />
+                                        {formErrors.firstName.length > 0 && (
+                                            <span className="errorMessage">{formErrors.firstName}</span>
+                                        )}
+                                    </div>
+                                    <div className="lastName">
+                                        <label htmlFor="lastName">Last Name</label>
+                                        <input
+                                            className={formErrors.lastName.length > 0 ? "error" : null}
+                                            placeholder="Last Name"
+                                            type="text"
+                                            name="lastName"
+                                            noValidate
+                                            onChange={this.handleChange}
+                                        />
+                                        {formErrors.lastName.length > 0 && (
+                                            <span className="errorMessage">{formErrors.lastName}</span>
+                                        )}
+                                    </div>
+                                    <div className="userName">
+                                        <label htmlFor="userName">Username</label>
+                                        <input
+                                            className={formErrors.userName.length > 0 ? "error" : null}
+                                            placeholder="username"
+                                            type="text"
+                                            name="userName"
+                                            noValidate
+                                            onChange={this.handleChange}
+                                        />
+                                        {formErrors.userName.length > 0 && (
+                                            <span className="errorMessage">{formErrors.userName}</span>
+                                        )}
+                                    </div>
+                                    <div className="gitHub">
+                                        <label htmlFor="gitHub">Github</label>
+                                        <input
+                                            className={formErrors.gitHub.length > 0 ? "error" : null}
+                                            placeholder="URL Github"
+                                            type="text"
+                                            name="gitHub"
+                                            noValidate
+                                            onChange={this.handleChange}
+                                        />
+                                        {formErrors.gitHub.length > 0 && (
+                                            <span className="errorMessage">{formErrors.gitHub}</span>
+                                        )}
+                                    </div>
+
+                                    <div className="email">
+                                        <label htmlFor="email">Email</label>
+                                        <input
+                                            className={formErrors.email.length > 0 ? "error" : null}
+                                            placeholder="Email"
+                                            type="email"
+                                            name="email"
+                                            noValidate
+                                            onChange={this.handleChange}
+                                        />
+                                        {formErrors.email.length > 0 && (
+                                            <span className="errorMessage">{formErrors.email}</span>
+                                        )}
+                                    </div>
+                                    <div className="password">
+                                        <label htmlFor="password">Password</label>
+                                        <input
+                                            className={formErrors.password.length > 0 ? "error" : null}
+                                            placeholder="Password"
+                                            type="password"
+                                            name="password"
+                                            noValidate
+                                            onChange={this.handleChange}
+                                        />
+                                        {formErrors.password.length > 0 && (
+                                            <span className="errorMessage">{formErrors.password}</span>
+                                        )}
+                                    </div>
+                                    <div className="createAccount">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                    <button type="btn" id="btn-facebook">Sign in with Facebook</button>
+                                    <button type="btn" id="btn-Google">Sign in with Google</button>
+                                    <Link to="/" className="createAccount" >Already Have an Account? </Link>
+                                </form>
+                            </div>
                         </div>
-                    </MDBCol>
-                    <MDBBtn color="primary" type="submit">
-                        Submit Form
-          </MDBBtn>
-                </form>
+                    </div>
+                </div>
             </div>
-
+            //     </div>
+            // </div>
         );
     }
 }

@@ -5,7 +5,7 @@ import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import CreateChallenge from "./CreateChallenge/CreateChallenge";
 import DemoProject from "./DemoProject/DemoProject";
-import login from "./login/logIn";
+import login from "./login/login";
 import FreeUser from "./FreeUser/FreeUser";
 import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";

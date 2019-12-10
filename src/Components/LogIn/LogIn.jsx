@@ -2,6 +2,8 @@ import React from 'react';
 import './login.css';
 
 
+
+
 class login extends React.Component {
     render() {
         return (
@@ -18,20 +20,17 @@ class login extends React.Component {
                 <div className="form">
                     <div className="form-group">
                         <label htmlFor="email"></label>
-                        <input type="email" className="input-field" placeholder="Email" required></input>
+                        <input type="email" name="Email" className="input-field" placeholder="Email" required></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password"></label>
-                        <input type="password" className="input-field" placeholder="Enter Password" required></input>
+                        <input type="password" name="Password" className="input-field" placeholder="Enter Password" required></input>
 
                         <span href='/#'>Forgot Password ?</span>
                         <button type="button" className="btn-Register" >Log in</button>
                         <button type="button" className="btn-Register">Register Now</button>
-
-
                     </div>
                 </div>
-
             </div>
 
         );
