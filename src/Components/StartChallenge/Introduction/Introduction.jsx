@@ -21,6 +21,12 @@ class Introduction extends Component {
       tab: "2"
     }
   };
+
+  triggerStart = event => {
+    this.props.startChallenge(this.state.start);
+    event.target.className = "d-none";
+    console.log(event.target.className);
+  };
   render() {
     return (
       <>
@@ -53,7 +59,7 @@ class Introduction extends Component {
               </p>
             </div>
             <button
-              onClick={() => this.props.startChallenge(this.state.start)}
+              onClick={event => this.triggerStart(event)}
               className="custom-btn start-btn mt-3 p-2"
             >
               Start Challenge

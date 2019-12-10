@@ -52,7 +52,8 @@ const initialState = {
   validate: null,
   start: {
     check: false,
-    tab: "1"
+    tab: "1",
+    challenge: {}
   }
 };
 
