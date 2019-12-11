@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 
 const mapStateToProps = reduxStore => reduxStore;
 const mapDispatchToProps = dispatch => ({
-  fetchChallenges: skip => dispatch(handleFetchChallenges(skip))
+  fetchChallenges: skip => dispatch(handleFetchChallenges(skip)),
+  StoreContent: content =>
+    dispatch({
+      type: "STORE_CONTENT",
+      payload: content
+    })
 });
 
 const handleFetchChallenges = (skip = 0) => {
@@ -79,6 +84,15 @@ class ChallengesList extends Component {
       return pagesArray;
     } else return [1];
   };
+  storeContent = event => {
+    console.log(event.currentTarget.id);
+    let challengeContent = this.props.challengeList.challenges.filter(
+      challenge => {
+        return event.currentTarget.id == challenge._id;
+      }
+    );
+    this.props.StoreContent(challengeContent);
+  };
 
   getDifficulty = difficulty => {
     switch (difficulty) {
@@ -108,27 +122,33 @@ class ChallengesList extends Component {
                   {this.props.challengeList.challenges.map(
                     (singleChallenge, index) => {
                       return (
-                        <div className="card-challenge-container mt-1">
-                          <div className="row">
-                            <div className="col-12 col-lg-10">
-                              <p>
-                                <strong>
-                                  {this.getContentInfo(singleChallenge)}
-                                </strong>
-                                <br />
-                                <strong>Author:</strong>{" "}
-                                {singleChallenge.author || "no author"}
-                                <br />
-                                <strong>Description:</strong> <br />
-                                {singleChallenge.description}
-                                <br />
-                                <strong>
-                                  {singleChallenge.languages.join(" - ")}
-                                </strong>
-                              </p>
-                            </div>
-                            <div className="col-12 col-lg-2">
-                              <p>Upvotes: </p>
+                        <Link
+                          className="challenge-link"
+                          to={`/start/${singleChallenge._id}`}
+                          onClick={event => this.storeContent(event)}
+                          id={singleChallenge._id}
+                        >
+                          <div className="card-challenge-container mt-1">
+                            <div className="row">
+                              <div className="col-12 col-lg-10">
+                                <p>
+                                  <strong>
+                                    {this.getContentInfo(singleChallenge)}
+                                  </strong>
+                                  <br />
+                                  <strong>Author:</strong>{" "}
+                                  {singleChallenge.author || "no author"}
+                                  <br />
+                                  <strong>Description:</strong> <br />
+                                  {singleChallenge.description}
+                                  <br />
+                                  <strong>
+                                    {singleChallenge.languages.join(" - ")}
+                                  </strong>
+                                </p>
+                              </div>
+                              <div className="col-12 col-lg-2">
+                                <p>Upvotes: </p>
 
                               <p>
                                 <strong>Difficulty: </strong>
@@ -136,7 +156,7 @@ class ChallengesList extends Component {
                               </p>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       );
                     }
                   )}

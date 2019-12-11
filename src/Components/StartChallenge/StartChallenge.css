@@ -1,0 +1,21 @@
+.start-challenge-container {
+  overflow-x: hidden;
+  margin-top: 6rem;
+}
+
+.tab-btn {
+  background-color: transparent;
+  border: 0px;
+  color: black;
+}
+.tab-btn:focus {
+  outline: 0;
+}
+
+.nav-tabs .nav-link {
+  border-color: #dee2e6;
+  transition: background-color 0.3s ease-out;
+}
+.nav-tabs .nav-link:hover {
+  background-color: rgb(248, 248, 248);
+}
