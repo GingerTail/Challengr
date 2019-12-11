@@ -42,18 +42,18 @@ class Quiz extends Component {
   allowLink = event => {
     if (this.props.quiz.questions.length <= 4) {
       event.preventDefault();
-    } else console.log("works");
+    }
   };
 
   render() {
     return (
       <>
-        <h3 className="text-center">Quiz</h3>
         <div
           className={`${style.quizContainer} container-fluid text-left mb-5 ${
             this.state.isLoaded ? style.fadeIn : ""
           }`}
         >
+          <h3 className="text-center">Quiz</h3>
           <div className="row">
             {this.props.quiz.questions.map((question, index) => {
               return (
@@ -64,15 +64,22 @@ class Quiz extends Component {
             })}
             <div className="col-12 text-center">
               <button
-                className="btn btn-primary float-left"
+                className="custom-btn float-left"
                 onClick={this.AddQuestion}
               >
                 Add Question
               </button>
               <Link
+                to="/create"
+                /*   onClick={event => this.allowLink(event)} */
+                className="custom-btn disabled-link mr-1"
+              >
+                Previous
+              </Link>
+              <Link
                 to="/create/demo"
                 /*   onClick={event => this.allowLink(event)} */
-                className="btn btn-primary disabled-link"
+                className="custom-btn disabled-link ml-1"
               >
                 Next
               </Link>

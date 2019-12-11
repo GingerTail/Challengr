@@ -22,6 +22,17 @@ class Introduction extends Component {
     }
   };
 
+  /*  componentDidMount = () => {
+    this.setState(prevState => ({
+      start: {
+        ...prevState.start, // copy all other key-value pairs of food object
+        check: false,
+        tab: "1"
+      }
+    }));
+    this.props.startChallenge(this.state.start);
+  }; */
+
   triggerStart = event => {
     this.props.startChallenge(this.state.start);
     event.target.className = "d-none";

@@ -156,7 +156,7 @@ class QuizFrom extends Component {
           </div>
           <div>
             <button
-              className="btn btn-primary mt-4 mb-4 ml-2"
+              className="custom-btn mt-4 mb-4 ml-2"
               onClick={this.addWrongAnswer}
             >
               add wrong answer

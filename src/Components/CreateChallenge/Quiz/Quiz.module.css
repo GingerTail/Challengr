@@ -1,5 +1,6 @@
 .quizContainer {
   opacity: 0;
+  margin-top: 4rem;
   transition: opacity 1s ease-out;
 }
 .quizformContainer {

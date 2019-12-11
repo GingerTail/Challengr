@@ -1,12 +1,13 @@
+import {token} from "./fetchParams"
+
 export const handleGetQuiz = quiz => {
   return async function(dispatch, getState) {
-    console.log(quiz);
     try {
       var response = await fetch("http://localhost:3015/quiz", {
         headers: {
           "content-type": "application/json",
           authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU1NjcwMzIsImV4cCI6MTU3NTY1MzQzMn0.uDUnGQ7vip5JWIYRVPMrSfvGnhIos-ocqHP5kU_ldNc"
+            "Bearer " + token
         },
         body: JSON.stringify(quiz),
         method: "POST"
@@ -28,7 +29,6 @@ export const handleGetQuiz = quiz => {
 };
 
 export const uploadImageQuiz = (formData, index) => {
-  console.log(formData);
   return async function(dispatch, getState) {
     try {
       var response = await fetch(
@@ -36,7 +36,7 @@ export const uploadImageQuiz = (formData, index) => {
         {
           headers: {
             authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU1NjcwMzIsImV4cCI6MTU3NTY1MzQzMn0.uDUnGQ7vip5JWIYRVPMrSfvGnhIos-ocqHP5kU_ldNc"
+            "Bearer " + token
           },
           body: formData,
           method: "POST"
@@ -58,6 +58,62 @@ export const uploadImageQuiz = (formData, index) => {
   };
 };
 
+export const handleGetPdf = formData => {
+  return async function(dispatch, getState) {
+    try {
+      var response = await fetch(
+        "http://localhost:3015/demoChallenge/upload_demo_pdf",
+        {
+          headers: {
+            authorization:
+            "Bearer " + token
+          },
+          body: formData,
+          method: "POST"
+        }
+      );
+      if (response.ok) {
+        let json = await response.json();
+        if (json.success) {
+          dispatch({
+            type: "ADD_PDF_LINK",
+            pdfLink: json.pdfLink
+          });
+        }
+      } else throw new Error("response not success");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const handleGetDemo = demo => {
+  return async function(dispatch, getState) {
+    try {
+      var response = await fetch("http://localhost:3015/demoChallenge", {
+        headers: {
+          "content-type": "application/json",
+          authorization:
+          "Bearer " + token
+        },
+        body: JSON.stringify(demo),
+        method: "POST"
+      });
+      if (response.ok) {
+        let json = await response.json();
+        if (json.success) {
+          dispatch({
+            type: "CREATE_DEMO_CONTENT",
+            payload: json.content
+          });
+        }
+      } else throw new Error("response not success");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 export const handleCreateChallengr = generalSettings => {
   return async function(dispatch, getState) {
     try {
@@ -65,7 +121,7 @@ export const handleCreateChallengr = generalSettings => {
         headers: {
           "content-type": "application/json",
           authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU1NjcwMzIsImV4cCI6MTU3NTY1MzQzMn0.uDUnGQ7vip5JWIYRVPMrSfvGnhIos-ocqHP5kU_ldNc"
+          "Bearer " + token
         },
         body: JSON.stringify(generalSettings),
         method: "POST"

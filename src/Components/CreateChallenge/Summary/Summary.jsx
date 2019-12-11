@@ -3,28 +3,39 @@ import { connect } from "react-redux";
 import { handleGetQuiz } from "../../../Actions/CreateChallengeActions";
 import { Link } from "react-router-dom";
 import { handleCreateChallengr } from "../../../Actions/CreateChallengeActions";
-
+import { handleGetPdf } from "../../../Actions/CreateChallengeActions";
+import { handleGetDemo } from "../../../Actions/CreateChallengeActions";
+import "./summary.css";
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
 const mapDispatchToProps = dispatch => ({
   getQuizContent: quiz => dispatch(handleGetQuiz(quiz)),
   createChallengr: generalSettings =>
-    dispatch(handleCreateChallengr(generalSettings))
+    dispatch(handleCreateChallengr(generalSettings)),
+  getPdfLink: pdf => dispatch(handleGetPdf(pdf)),
+  getDemoContent: demo => dispatch(handleGetDemo(demo))
 });
 
 class Summary extends Component {
   submitChallenge = async () => {
-    this.props.getQuizContent(this.props.quiz);
-    console.log(this.props.generalSettings);
+    if (this.props.quiz.questions.length >= 4) {
+      this.props.getQuizContent(this.props.quiz);
+    }
+    this.props.getPdfLink(this.props.pdfFormData);
+    setTimeout(() => {
+      this.props.getDemoContent(this.props.demo);
+    }, 500);
     setTimeout(() => {
       this.props.createChallengr(this.props.generalSettings);
     }, 2000);
+    //window.location = "/redirect";
   };
+
   render() {
     return (
       <>
-        <div className="summary-container text-left">
+        <div className="summary-container text-left px-4">
           <div className="row">
             <div className="col-12" id="general-section">
               <h3 className="text-center">General Settings</h3>
@@ -65,31 +76,28 @@ class Summary extends Component {
                 );
               })}
             </div>
-            {this.props.pdf.pdf && (
+            {this.props.validate && (
               <div className="col-12" id="demo-section">
                 <h3 className="text-center">Demo</h3>
                 <p>
                   <strong>Description: </strong>
-                  descrizione random
+                  {this.props.demo.description}
                 </p>
                 <p>
                   <strong>File Uploaded:</strong> <br />
                   <strong>Name: </strong>
-                  {this.props.pdf.pdf.path}
+                  {this.props.pdfRaw.name}
                 </p>
               </div>
             )}
             <div className="col-12 mt-4 text-center">
               <Link
                 to="/create/generalsettings"
-                className="btn btn-primary disabled-link mr-1"
+                className="custom-btn disabled-link mr-1"
               >
                 Previous
               </Link>
-              <button
-                className="btn btn-primary"
-                onClick={this.submitChallenge}
-              >
+              <button className="custom-btn" onClick={this.submitChallenge}>
                 Submit
               </button>
             </div>

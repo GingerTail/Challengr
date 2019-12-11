@@ -10,6 +10,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: "STORE_CONTENT",
       payload: content
+    }),
+  startChallenge: start =>
+    dispatch({
+      type: "START_CHALLENGE",
+      payload: start
     })
 });
 
@@ -45,6 +50,11 @@ class ChallengesList extends Component {
   }
 
   componentDidMount = () => {
+    let start = {
+      check: false,
+      tab: "1"
+    };
+    this.props.startChallenge(start);
     //this.setState({ challenges: this.props.challengeList });
     this.props.fetchChallenges();
   };
@@ -85,20 +95,34 @@ class ChallengesList extends Component {
     } else return [1];
   };
   storeContent = event => {
+    this.props.StoreContent({});
     console.log(event.currentTarget.id);
     let challengeContent = this.props.challengeList.challenges.filter(
       challenge => {
         return event.currentTarget.id == challenge._id;
       }
-    );
+    )[0];
     this.props.StoreContent(challengeContent);
+  };
+
+  getDifficulty = difficulty => {
+    switch (difficulty) {
+      case 1:
+        return "Easy";
+      case 2:
+        return "Normal";
+      case 3:
+        return "Hard";
+      default:
+        return "NA";
+    }
   };
 
   render() {
     let pagesArray = this.getPagination();
     return (
       <>
-        <Link className="custom-btn mb-5" to="create/quiz">
+        <Link className="create-btn mb-5" to="create">
           + Add Challenge
         </Link>
         <div className="list-container">
@@ -138,7 +162,10 @@ class ChallengesList extends Component {
                                 <p>Upvotes: </p>
 
                                 <p>
-                                  <strong>Difficulty:</strong> Easy
+                                  <strong>Difficulty: </strong>
+                                  {this.getDifficulty(
+                                    singleChallenge.difficulty
+                                  )}
                                 </p>
                               </div>
                             </div>

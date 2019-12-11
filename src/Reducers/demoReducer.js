@@ -1,15 +1,15 @@
 export default function(state = {}, action) {
   switch (action.type) {
-    case "START_CHALLENGE":
+    case "ADD_PDF_LINK":
+      console.log(action.pdfLink);
       return {
         ...state,
-        check: action.payload.check,
-        tab: action.payload.tab
+        pdfLink: action.pdfLink
       };
-    case "STORE_CONTENT":
+    case "ADD_DEMO_DESCRIPTION":
       return {
         ...state,
-        challenge: action.payload
+        description: action.payload
       };
     default:
       return state;

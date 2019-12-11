@@ -3,6 +3,7 @@ import AnimatedMulti from "./Dropdown/Dropdown";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import DropdownMenu from "../provadrop";
+import "./generalsettings.css";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -33,14 +34,16 @@ class GeneralSettings extends Component {
   render() {
     return (
       <>
-        <h3 className="text-center">General Settings</h3>
-        <div className="container text-left mb-5 animated fadeIn">
+        <div className="container general-settings-container text-left mb-5 animated fadeIn">
+          <h3 className="text-center">General Settings</h3>
           <div className="row">
             <div className="col-sm-12 col-md-12">
               <div className="htmlForm-group">
-                <label>Description:</label>
+                <label>
+                  <strong>Description</strong>
+                </label>
                 <textarea
-                  className="form-control rounded-0"
+                  className="form-control m-0"
                   id="examplehtmlFormControlTextarea1"
                   onChange={e => this.updateDescription(e)}
                   rows="10"
@@ -51,7 +54,9 @@ class GeneralSettings extends Component {
               <div className="row">
                 <div className="col-sm-12 col-md-6">
                   <div id="difficulty">
-                    <label>Difficulty: </label>
+                    <label>
+                      <strong>Difficulty: </strong>{" "}
+                    </label>
                     <div className="custom-control custom-radio">
                       <input
                         type="radio"
@@ -107,7 +112,7 @@ class GeneralSettings extends Component {
                 <div className="col-sm-12 col-md-6">
                   <div id="languages">
                     <label htmlFor="examplehtmlFormControlTextarea1">
-                      Languages{" "}
+                      <strong>Languages: </strong>{" "}
                     </label>
                     <DropdownMenu />
                     {this.props.generalSettings.languages.map(
@@ -125,16 +130,13 @@ class GeneralSettings extends Component {
               </div>
             </div>
             <div className="col-12 mt-4 text-center">
-              <Link
-                to="/create/demo"
-                className="btn btn-primary disabled-link mr-1"
-              >
+              <Link to="/create/demo" className="custom-btn disabled-link mr-1">
                 Previous
               </Link>
               <Link
                 to="/create/summary"
                 /* onClick={event => this.allowLink(event)} */
-                className="btn btn-primary disabled-link ml-1"
+                className="custom-btn disabled-link ml-1"
               >
                 Next
               </Link>
