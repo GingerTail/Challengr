@@ -1,49 +1,45 @@
 import React, { Component } from "react";
 import "./App.css";
 import Quiz from "./Quiz";
-
+import { token } from "../../../Actions/fetchParams";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quiz:null
+      quiz: null
     };
   }
 
-  componentDidMount = async ()=> {
-  const quiz = await this.fetchQuiz(this.props.quizId)
-  this.setState({quiz})
-  }
-  
-  fetchQuiz = async (quizId) => {
-   try{
-    let response = await fetch("http://localhost:3015/quiz/"+quizId,{
-      headers:{
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5MmFlZjkzYTlhMzA4ODA1NGYzODEiLCJpYXQiOjE1NzYwNDUxNzMsImV4cCI6MTU3NjEzMTU3M30.sz7msqh14IguAidbQa0XuDyheHHY_QWsRfGOxcShIyU"
+  componentDidMount = async () => {
+    const quiz = await this.fetchQuiz(this.props.quizId);
+    this.setState({ quiz });
+  };
+
+  fetchQuiz = async quizId => {
+    try {
+      let response = await fetch("http://localhost:3015/quiz/" + quizId, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: "Bearer " + token
+        }
+      });
+      if (response.ok) {
+        let json = await response.json();
+        if (json.success) {
+          return json.quiz;
+        } else console.log(json.error);
       }
-    })
-    if(response.ok){
-      let json = await response.json()
-      if(json.success){
-       return json.quiz
-      }else console.log(json.error)
+    } catch (err) {
+      console.log(err);
     }
-   }catch(err){
-     console.log(err)
-   }
-  }
+  };
 
   render() {
     return (
       <div className="container">
-      {this.state.quiz != null && 
-        <Quiz
-          quiz={this.state.quiz}
-        />
-      }
+        {this.state.quiz != null && <Quiz quiz={this.state.quiz} />}
       </div>
     );
   }
