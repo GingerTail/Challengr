@@ -53,8 +53,8 @@ class App extends Component {
               </h3>
               <h4>When you are ready click the button</h4>
               <button
-                onClick={this.setState({ quizStarted: true })}
-                className="custon-btn px-3"
+                onClick={() => this.setState({ quizStarted: true })}
+                className="custom-btn px-3"
               >
                 Start
               </button>
