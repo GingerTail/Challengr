@@ -13,45 +13,40 @@ import {
   Col,
   Jumbotron
 } from "reactstrap";
-import StartQuiz from "./QuizChallenge/App"
+import StartQuiz from "./QuizChallenge/App";
 import { InputGroup, InputGroupAddon, Input } from "reactstrap";
 import "./StartChallenge.css";
 import classnames from "classnames";
 import Introduction from "./Introduction/Introduction";
 import { useSelector } from "react-redux";
+import { DemoChallenge } from "./DemoChallenge/DemoChallenge";
 
 let started = false;
 let demo = false;
 let quiz = false;
 
-
-
-
-
 export const StartChallenge = props => {
   const store = useSelector(state => state.start);
-  
+
   //CHECK IF THE CHALLENGE IS STARTED, IF YES, GO TO THE NEXT TAB
   useEffect(() => {
     if (started === false) {
       if (store.tab === "2") {
         if (activeTab !== store.tab) setActiveTab("2");
         started = true;
-      } else {
+      } else if (store.tab === "1") {
         if (activeTab !== store.tab) setActiveTab("1");
       }
     }
   });
   //CHECK IF THE DEMO OR QUIZ EXIST, IF YES, DISPLAY THEIR TAB
   useEffect(() => {
-    
-      quiz = store.challenge.content.some(
-        content => content["resourceType"] === "quizId"
-      );
-      demo = store.challenge.content.some(
-        content => content["resourceType"] === "demoId"
-      );
-    
+    quiz = store.challenge.content.some(
+      content => content["resourceType"] === "quizId"
+    );
+    demo = store.challenge.content.some(
+      content => content["resourceType"] === "demoId"
+    );
   }, []);
 
   const [activeTab, setActiveTab] = useState("1");
@@ -65,12 +60,24 @@ export const StartChallenge = props => {
   };
 
   //search into the content array of the challenge and give back the quiz Id can be reused for Demo
-const getQuizId = ()=>{
-  let quizId = store.challenge.content.find(el => el.resourceType === "quizId")
-  if(quizId !== undefined){
-    return quizId.value
-  }
-}
+  const getQuizId = () => {
+    let quizId = store.challenge.content.find(
+      el => el.resourceType === "quizId"
+    );
+    if (quizId !== undefined) {
+      return quizId.value;
+    }
+  };
+
+  //search into the content array of the challenge and give back the demo Id can be reused for Quiz
+  const getDemoId = () => {
+    let demoId = store.challenge.content.find(
+      el => el.resourceType === "demoId"
+    );
+    if (demoId !== undefined) {
+      return demoId.value;
+    }
+  };
 
   return (
     <div className="start-challenge-container">
@@ -139,62 +146,26 @@ const getQuizId = ()=>{
           </Row>
         </TabPane>
         <TabPane tabId={quiz === true ? "2" : "0"}>
+          <div className="challenge-nav pt-3 pb-1 px-3 mb-3">
+            <h2>Quiz Challenge</h2>
+            <p>Time: 00:00</p>
+          </div>
           <Row>
             <Col sm="12">
-            <StartQuiz quizId={getQuizId()}/>
+              <StartQuiz quizId={getQuizId()} />
             </Col>
           </Row>
         </TabPane>
         <TabPane tabId={quiz === true ? "3" : "2"}>
-          <Row>
-            <Col sm="12" md={{ size: 6, offset: 3 }}>
-              <div>
-                <Jumbotron className="text-center">
-                  <h1 className="display-3 text-center">Demo Project!</h1>
-                  <p className="lead text-center">
-                    This is a simple hero unit, a simple Jumbotron-style
-                    component for calling extra attention to featured content or
-                    information.
-                  </p>
-                  <hr className="my-2" />
-                  <p>
-                    It uses utility classes for typography and spacing to space
-                    content out within the larger container.
-                  </p>
-                  <p className="lead">
-                    <Button color="primary text-center">GET PDF</Button>
-                  </p>
-                </Jumbotron>
-              </div>
-            </Col>
-            <Col sm="12" md={{ size: 6, offset: 3 }}>
-              <div>
-                <Jumbotron className="text-center">
-                  <h1 className="display-3">Github Link</h1>
-                  <p className="lead">
-                    This is a simple hero unit, a simple Jumbotron-style
-                    component for calling extra attention to featured content or
-                    information.
-                  </p>
-                  <hr className="my-2" />
-                  <p>
-                    It uses utility classes for typography and spacing to space
-                    content out within the larger container.
-                  </p>
-                  <p className="lead">
-                    <InputGroup>
-                      <InputGroupAddon addonType="prepend">
-                        <Button>Add Github link</Button>
-                      </InputGroupAddon>
-                      <Input />
-                    </InputGroup>
-                  </p>
-                </Jumbotron>
-              </div>
-            </Col>
-          </Row>
+          <div className="challenge-nav p-3 mb-3">
+            <h2>Demo Challenge</h2>
+          </div>
+          <DemoChallenge demoId={getDemoId()} />
         </TabPane>
         <TabPane tabId="4">
+          <div className="challenge-nav p-3 mb-3">
+            <h2>Submit</h2>
+          </div>
           <Row>
             <Col sm="12">
               <h4>Submit</h4>
