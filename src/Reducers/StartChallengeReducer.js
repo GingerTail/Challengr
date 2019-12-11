@@ -7,7 +7,6 @@ export default function(state = {}, action) {
         tab: action.payload.tab
       };
     case "STORE_CONTENT":
-      console.log(action.payload);
       return {
         ...state,
         challenge: action.payload
