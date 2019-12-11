@@ -52,7 +52,7 @@ const initialState = {
   },
   pdfFormData: {},
   pdfRaw: {},
-  validate: null
+  validate: null,
   start: {
     check: false,
     tab: "1",

@@ -1,3 +1,5 @@
+import {token} from "./fetchParams"
+
 export const handleGetQuiz = quiz => {
   return async function(dispatch, getState) {
     try {
@@ -5,7 +7,7 @@ export const handleGetQuiz = quiz => {
         headers: {
           "content-type": "application/json",
           authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU4ODg2MTMsImV4cCI6MTU3NTk3NTAxM30.5YEV5TeRvE3fqZHqewH6hKrX5FNUcgKcw_k-LZGChd8"
+            "Bearer " + token
         },
         body: JSON.stringify(quiz),
         method: "POST"
@@ -34,7 +36,7 @@ export const uploadImageQuiz = (formData, index) => {
         {
           headers: {
             authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU4ODg2MTMsImV4cCI6MTU3NTk3NTAxM30.5YEV5TeRvE3fqZHqewH6hKrX5FNUcgKcw_k-LZGChd8"
+            "Bearer " + token
           },
           body: formData,
           method: "POST"
@@ -64,7 +66,7 @@ export const handleGetPdf = formData => {
         {
           headers: {
             authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU4ODg2MTMsImV4cCI6MTU3NTk3NTAxM30.5YEV5TeRvE3fqZHqewH6hKrX5FNUcgKcw_k-LZGChd8"
+            "Bearer " + token
           },
           body: formData,
           method: "POST"
@@ -92,7 +94,7 @@ export const handleGetDemo = demo => {
         headers: {
           "content-type": "application/json",
           authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU4ODg2MTMsImV4cCI6MTU3NTk3NTAxM30.5YEV5TeRvE3fqZHqewH6hKrX5FNUcgKcw_k-LZGChd8"
+          "Bearer " + token
         },
         body: JSON.stringify(demo),
         method: "POST"
@@ -119,7 +121,7 @@ export const handleCreateChallengr = generalSettings => {
         headers: {
           "content-type": "application/json",
           authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGU5M2U5OWJjNjk4MjI4ZDgzMGUzZDIiLCJpYXQiOjE1NzU4ODg2MTMsImV4cCI6MTU3NTk3NTAxM30.5YEV5TeRvE3fqZHqewH6hKrX5FNUcgKcw_k-LZGChd8"
+          "Bearer " + token
         },
         body: JSON.stringify(generalSettings),
         method: "POST"

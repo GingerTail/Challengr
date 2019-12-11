@@ -90,7 +90,7 @@ class ChallengesList extends Component {
       challenge => {
         return event.currentTarget.id == challenge._id;
       }
-    );
+    )[0];
     this.props.StoreContent(challengeContent);
   };
 
@@ -150,10 +150,13 @@ class ChallengesList extends Component {
                               <div className="col-12 col-lg-2">
                                 <p>Upvotes: </p>
 
-                              <p>
-                                <strong>Difficulty: </strong>
-                                {this.getDifficulty(singleChallenge.difficulty)}
-                              </p>
+                                <p>
+                                  <strong>Difficulty: </strong>
+                                  {this.getDifficulty(
+                                    singleChallenge.difficulty
+                                  )}
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </Link>

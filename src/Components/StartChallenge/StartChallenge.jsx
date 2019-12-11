@@ -13,6 +13,7 @@ import {
   Col,
   Jumbotron
 } from "reactstrap";
+import StartQuiz from "./QuizChallenge/App"
 import { InputGroup, InputGroupAddon, Input } from "reactstrap";
 import "./StartChallenge.css";
 import classnames from "classnames";
@@ -22,9 +23,14 @@ import { useSelector } from "react-redux";
 let started = false;
 let demo = false;
 let quiz = false;
+
+
+
+
+
 export const StartChallenge = props => {
   const store = useSelector(state => state.start);
-
+  
   //CHECK IF THE CHALLENGE IS STARTED, IF YES, GO TO THE NEXT TAB
   useEffect(() => {
     if (started === false) {
@@ -38,15 +44,14 @@ export const StartChallenge = props => {
   });
   //CHECK IF THE DEMO OR QUIZ EXIST, IF YES, DISPLAY THEIR TAB
   useEffect(() => {
-    if (store.challenge.length >= -1) {
-      quiz = store.challenge[0].content.some(
+    
+      quiz = store.challenge.content.some(
         content => content["resourceType"] === "quizId"
       );
-      demo = store.challenge[0].content.some(
+      demo = store.challenge.content.some(
         content => content["resourceType"] === "demoId"
       );
-    }
-    console.log(quiz + "demo: " + demo);
+    
   }, []);
 
   const [activeTab, setActiveTab] = useState("1");
@@ -58,6 +63,14 @@ export const StartChallenge = props => {
       alert("You need to start the challenge");
     }
   };
+
+  //search into the content array of the challenge and give back the quiz Id can be reused for Demo
+const getQuizId = ()=>{
+  let quizId = store.challenge.content.find(el => el.resourceType === "quizId")
+  if(quizId !== undefined){
+    return quizId.value
+  }
+}
 
   return (
     <div className="start-challenge-container">
@@ -128,7 +141,7 @@ export const StartChallenge = props => {
         <TabPane tabId={quiz === true ? "2" : "0"}>
           <Row>
             <Col sm="12">
-              <h4>Quiz</h4>
+            <StartQuiz quizId={getQuizId()}/>
             </Col>
           </Row>
         </TabPane>
