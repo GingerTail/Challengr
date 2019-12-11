@@ -7,6 +7,7 @@ import CreateChallenge from "./CreateChallenge/CreateChallenge";
 import DemoProject from "./DemoProject/DemoProject";
 import login from "./login/login";
 import FreeUser from "./FreeUser/FreeUser";
+import FreeUserDashboard from "./FreeUserDashboard/FreeUserDashboard"
 import Quiz from "./CreateChallenge/Quiz/Quiz";
 import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
 import Demo from "./CreateChallenge/Demo/Demo";
@@ -70,6 +71,8 @@ class RouterPage extends Component {
         <Route exact path="/demo" component={DemoProject} />
         <Route exact path="/login" component={login} />
         <Route exact path="/FreeUser" component={FreeUser} />
+        <Route exact path="/FreeUserDashboard" component={FreeUserDashboard} />
+
       </Router>
     );
   }

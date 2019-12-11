@@ -226,8 +226,7 @@ class FreeUser extends Component {
                     </div>
                 </div>
             </div>
-            //     </div>
-            // </div>
+
         );
     }
 }
