@@ -10,6 +10,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: "STORE_CONTENT",
       payload: content
+    }),
+  startChallenge: start =>
+    dispatch({
+      type: "START_CHALLENGE",
+      payload: start
     })
 });
 
@@ -45,6 +50,11 @@ class ChallengesList extends Component {
   }
 
   componentDidMount = () => {
+    let start = {
+      check: false,
+      tab: "1"
+    };
+    this.props.startChallenge(start);
     //this.setState({ challenges: this.props.challengeList });
     this.props.fetchChallenges();
   };
@@ -85,6 +95,7 @@ class ChallengesList extends Component {
     } else return [1];
   };
   storeContent = event => {
+    this.props.StoreContent({});
     console.log(event.currentTarget.id);
     let challengeContent = this.props.challengeList.challenges.filter(
       challenge => {
