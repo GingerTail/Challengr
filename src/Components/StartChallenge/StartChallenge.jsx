@@ -5,21 +5,16 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
-  Col,
-  Jumbotron
+  Col
 } from "reactstrap";
 import StartQuiz from "./QuizChallenge/App";
-import { InputGroup, InputGroupAddon, Input } from "reactstrap";
 import "./StartChallenge.css";
 import classnames from "classnames";
 import Introduction from "./Introduction/Introduction";
 import { useSelector } from "react-redux";
 import { DemoChallenge } from "./DemoChallenge/DemoChallenge";
+import Timer from "./Timer/Timer";
 
 let started = false;
 let demo = false;
@@ -50,6 +45,7 @@ export const StartChallenge = props => {
   }, []);
 
   const [activeTab, setActiveTab] = useState("1");
+  const [timer, setStartTimer] = useState(false);
 
   const toggle = tab => {
     if (store.check) {
@@ -77,6 +73,10 @@ export const StartChallenge = props => {
     if (demoId !== undefined) {
       return demoId.value;
     }
+  };
+
+  const startTimer = value => {
+    setStartTimer(value);
   };
 
   return (
@@ -146,13 +146,13 @@ export const StartChallenge = props => {
           </Row>
         </TabPane>
         <TabPane tabId={quiz === true ? "2" : "0"}>
-          <div className="challenge-nav pt-3 pb-1 px-3 mb-3">
-            <h2>Quiz Challenge</h2>
-            <p>Time: 00:00</p>
+          <div className="challenge-nav d-flex justify-content-between pt-3 pb-1 px-3 mb-3">
+            <h2 className="d-block">Quiz Challenge</h2>
+            <h2 className="d-block pr-1">{timer ? <Timer /> : "0:00"}</h2>
           </div>
           <Row>
             <Col sm="12">
-              <StartQuiz quizId={getQuizId()} />
+              <StartQuiz startTimer={startTimer} quizId={getQuizId()} />
             </Col>
           </Row>
         </TabPane>
