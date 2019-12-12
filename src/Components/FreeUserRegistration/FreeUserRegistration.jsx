@@ -44,21 +44,43 @@ class FreeUser extends Component {
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      console.log(`
-          --SUBMITTING--
-          First Name: ${this.state.firstName}
-          Last Name: ${this.state.lastName}
-          Username: ${this.state.userName}
-          Github: ${this.state.gitHub}
-          Email: ${this.state.email}
-          Password: ${this.state.password}
-        `);
+      let newUser = {
+        email: this.state.email,
+        password: this.state.password,
+        githubProfile: this.state.gitHub,
+        username: this.state.userName,
+        name: this.state.firstName,
+        surname: this.state.lastName
+      };
+      this.createNewUser(newUser);
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+    }
+  };
+
+  createNewUser = async user => {
+    try {
+      let response = await fetch("http://localhost:3015/user/register", {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify(user)
+      });
+      let json = await response.json();
+      if (response.status === 201) {
+        if (json.success) {
+          console.log(json);
+        }
+      } else {
+        console.log(json);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -97,7 +119,7 @@ class FreeUser extends Component {
         break;
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    this.setState({ formErrors, [name]: value });
   };
 
   render() {
