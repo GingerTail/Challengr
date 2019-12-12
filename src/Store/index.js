@@ -9,6 +9,7 @@ import generalSettingsReducer from "../Reducers/generalSettingReducer";
 import demoReducer from "../Reducers/demoReducer";
 import pdfRawReducer from "../Reducers/pdfRawReducer";
 import StartChallengeReducer from "../Reducers/StartChallengeReducer";
+import handleTabReducer from "../Reducers/handleTabReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -57,7 +58,8 @@ const initialState = {
     check: false,
     tab: "1",
     challenge: {}
-  }
+  },
+  currentTab: "1"
 };
 
 const bigReducer = combineReducers({
@@ -69,6 +71,7 @@ const bigReducer = combineReducers({
   pdfRaw: pdfRawReducer,
   start: StartChallengeReducer,
   validate: validateReducer,
+  currentTab: handleTabReducer,
   generalSettings: generalSettingsReducer
 });
 

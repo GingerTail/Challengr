@@ -17,7 +17,7 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className=" w-100 fixed-top navbar bg-navbar">
+      <nav className=" w-100 navbar bg-navbar fixed-top">
         <a className="navbar-brand" href="/">
           <img
             src="/docs/4.3/assets/brand/bootstrap-solid.svg"
