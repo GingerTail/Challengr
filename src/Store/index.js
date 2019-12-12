@@ -8,6 +8,7 @@ import validateReducer from "../Reducers/validateReducer";
 import generalSettingsReducer from "../Reducers/generalSettingReducer";
 import demoReducer from "../Reducers/demoReducer";
 import pdfRawReducer from "../Reducers/pdfRawReducer";
+import toDoQuizReducer from "../Reducers/toDoQuizReducer"
 import StartChallengeReducer from "../Reducers/StartChallengeReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -45,6 +46,9 @@ const initialState = {
       }
     ]
   },
+  toDoQuiz:{
+
+  },
   demo: {
     description: "",
     pdfLink: "",
@@ -67,6 +71,7 @@ const bigReducer = combineReducers({
   demo: demoReducer,
   pdfFormData: uploadReducer,
   pdfRaw: pdfRawReducer,
+  toDoQuiz: toDoQuizReducer,
   start: StartChallengeReducer,
   validate: validateReducer,
   generalSettings: generalSettingsReducer
