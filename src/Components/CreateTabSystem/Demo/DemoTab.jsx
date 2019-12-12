@@ -43,7 +43,6 @@ class DemoTab extends Component {
     return (
       <>
         <div className="mb-4 demoTab-container">
-          <h3 className="text-center">Demo</h3>
           <div className="row">
             <div className="col-12 text-center">
               <label>Upload PDF file: </label>

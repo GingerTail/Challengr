@@ -38,8 +38,7 @@ class GeneralSettingsTab extends Component {
   render() {
     return (
       <>
-        <div className="container general-settings-container text-left mb-5 animated fadeIn">
-          <h3 className="text-center">General Settings</h3>
+        <div className="container text-left mb-5 animated fadeIn">
           <div className="row">
             <div className="col-sm-12 col-md-12">
               <div className="htmlForm-group">

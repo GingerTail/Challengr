@@ -55,7 +55,6 @@ class QuizTab extends Component {
     return (
       <>
         <div className="container-fluid text-left mb-5 mt-0">
-          <h3 className="text-center">Quiz</h3>
           <div className="row">
             {this.props.quiz.questions.map((question, index) => {
               return (
