@@ -1,0 +1,33 @@
+.complete-section {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+  border-radius: 0px 0px 20px 20px;
+  color: #eee;
+  background: rgb(34, 38, 41);
+  padding-bottom: 1rem;
+}
+.complete-section img {
+  margin-bottom: 1rem;
+}
+
+#submit-result {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+}
+.custom-icon1 {
+  transition: color 0.3s;
+}
+.custom-icon1:hover {
+  cursor: pointer;
+  color: #66c090;
+}
+
+.custom-icon2 {
+  transition: color 0.3s;
+}
+.custom-icon2:hover {
+  cursor: pointer;
+  color: rgb(139, 63, 63);
+}

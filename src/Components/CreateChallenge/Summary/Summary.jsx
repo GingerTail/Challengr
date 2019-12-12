@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Summary extends Component {
+  redirectPage = () => {
+    window.location = "/create/generalsettings";
+  };
   submitChallenge = async () => {
     if (this.props.quiz.questions.length >= 4) {
       this.props.getQuizContent(this.props.quiz);
@@ -91,12 +94,13 @@ class Summary extends Component {
               </div>
             )}
             <div className="col-12 mt-4 text-center">
-              <Link
-                to="/create/generalsettings"
-                className="custom-btn disabled-link mr-1"
+              <button
+                onClick={this.redirectPage}
+                className="custom-btn p-2 mr-1"
               >
                 Previous
-              </Link>
+              </button>
+
               <button className="custom-btn" onClick={this.submitChallenge}>
                 Submit
               </button>
