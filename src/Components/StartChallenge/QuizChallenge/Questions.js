@@ -115,7 +115,7 @@ class Questions extends Component {
             <div className="text-center">
               <button
                 id="next"
-                className="custom-btn px-3"
+                className="custom-btn px-3 mx-auto"
                 onClick={this.nextQuestion}
               >
                 Next

@@ -3,6 +3,9 @@ import "./createchallenge.css";
 import { Link } from "react-router-dom";
 
 export default class CreateChallenge extends Component {
+  redirectPage = () => {
+    window.location = "/create/quiz";
+  };
   render() {
     return (
       <>
@@ -58,9 +61,9 @@ export default class CreateChallenge extends Component {
                 </li>
               </ul>
               <h4 className="mb-4">Everything clear?</h4>
-              <Link to="/create/quiz" className="custom-btn p-2">
+              <button onClick={this.redirectPage} className="custom-btn p-2">
                 Create Challenge
-              </Link>
+              </button>
             </div>
           </div>
         </div>
