@@ -2,7 +2,11 @@
   margin-top: 3.5rem;
 }
 
-.backUp-btn a {
+.backUp-btn {
+  position: fixed;
+  top: 90%;
+  z-index: 1001;
+  left: 92%;
   background-color: #222629;
   border-radius: 10px;
   border: 0px;
@@ -11,6 +15,8 @@
   filter: brightness(70%);
   transition: filter 0.3s;
 }
-.backUp-btn a:hover {
+.backUp-btn:hover {
+  text-decoration: none;
+  color: #66c090;
   filter: brightness(100%);
 }
