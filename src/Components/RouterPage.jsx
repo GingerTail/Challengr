@@ -13,6 +13,7 @@ import Demo from "./CreateChallenge/Demo/Demo";
 import Summary from "./CreateChallenge/Summary/Summary";
 import MainPage from "./QuizPlay/MainPage";
 import RedirectPage from "./CreateChallenge/RedirectPage/RedirectPage";
+import { TabMenu } from "./CreateTabSystem/TabMenu";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -61,7 +62,7 @@ class RouterPage extends Component {
         />
         <Route exact path="/create/summary" component={Summary} />
         <Route path="/playQuiz/:id" component={MainPage} />
-        <Route exact path="/create" component={CreateChallenge} />
+        <Route exact path="/create" component={TabMenu} />
         <Route exact path="/start/:id" component={StartChallenge} />
         <Route exact path="/login" component={login} />
         <Route exact path="/FreeUser" component={FreeUser} />

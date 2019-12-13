@@ -20,6 +20,7 @@ import classnames from "classnames";
 import Introduction from "./Introduction/Introduction";
 import { useSelector } from "react-redux";
 import { DemoChallenge } from "./DemoChallenge/DemoChallenge";
+import { Results } from "./Results/Results";
 
 let started = false;
 let demo = false;
@@ -130,7 +131,7 @@ export const StartChallenge = props => {
                 toggle("4");
               }}
             >
-              <button className="tab-btn">Submit</button>
+              <button className="tab-btn">Results</button>
             </NavLink>
           </NavItem>
         ) : (
@@ -163,12 +164,12 @@ export const StartChallenge = props => {
           <DemoChallenge demoId={getDemoId()} />
         </TabPane>
         <TabPane tabId="4">
-          <div className="challenge-nav p-3 mb-3">
-            <h2>Submit</h2>
+          <div className="challenge-nav p-3">
+            <h2>Results</h2>
           </div>
           <Row>
             <Col sm="12">
-              <h4>Submit</h4>
+              <Results />
             </Col>
           </Row>
         </TabPane>

@@ -1,15 +1,20 @@
 import React, { Component } from "react";
-import "./createchallenge.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class CreateChallenge extends Component {
-  redirectPage = () => {
-    window.location = "/create/quiz";
-  };
+const mapDispatchToProps = dispatch => ({
+  setCurrentTab: currentTab =>
+    dispatch({
+      type: "SET_CURRENT_TAB",
+      payload: currentTab
+    })
+});
+
+class IntroductionTab extends Component {
   render() {
     return (
       <>
-        <div className="create-challenge-container px-5">
+        <div className="px-5">
           <div className="row">
             <div className="col-12">
               <h1>CREATE CHALLENGE</h1>
@@ -60,8 +65,11 @@ export default class CreateChallenge extends Component {
                   </strong>
                 </li>
               </ul>
-              <h4 className="mb-4">Everything clear?</h4>
-              <button onClick={this.redirectPage} className="custom-btn p-2">
+              <h4 className="mb-1">Everything clear?</h4>
+              <button
+                onClick={() => this.props.setCurrentTab("2")}
+                className="custom-btn p-2"
+              >
                 Create Challenge
               </button>
             </div>
@@ -71,3 +79,5 @@ export default class CreateChallenge extends Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(IntroductionTab);

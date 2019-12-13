@@ -1,0 +1,41 @@
+.quizContainer {
+  opacity: 0;
+  margin-top: 4rem;
+  transition: opacity 1s ease-out;
+}
+.quizformContainer {
+  background-color: #eee;
+}
+
+.quizContainer.fadeIn {
+  opacity: 1;
+}
+
+.textImg {
+  color: white;
+  position: absolute;
+  bottom: 0%;
+}
+
+input {
+  border-radius: 2px;
+  border: 1px solid grey;
+}
+
+.inputUpload {
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  padding-left: 2.5rem;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+/* to add to global scope 
+
+:global(.row) {
+  background: green;
+} */

@@ -14,13 +14,15 @@ const mapDispatchToProps = dispatch => ({
   createChallengr: generalSettings =>
     dispatch(handleCreateChallengr(generalSettings)),
   getPdfLink: pdf => dispatch(handleGetPdf(pdf)),
-  getDemoContent: demo => dispatch(handleGetDemo(demo))
+  getDemoContent: demo => dispatch(handleGetDemo(demo)),
+  setCurrentTab: currentTab =>
+    dispatch({
+      type: "SET_CURRENT_TAB",
+      payload: currentTab
+    })
 });
 
 class Summary extends Component {
-  redirectPage = () => {
-    window.location = "/create/generalsettings";
-  };
   submitChallenge = async () => {
     if (this.props.quiz.questions.length >= 4) {
       this.props.getQuizContent(this.props.quiz);
@@ -38,10 +40,10 @@ class Summary extends Component {
   render() {
     return (
       <>
-        <div className="summary-container text-left px-4">
+        <div className="text-left px-4">
           <div className="row">
             <div className="col-12" id="general-section">
-              <h3 className="text-center">General Settings</h3>
+              <h3>General Settings</h3>
               <p>
                 <strong>Description: </strong> <br />
                 {this.props.generalSettings.description}
@@ -59,7 +61,7 @@ class Summary extends Component {
               <hr></hr>
             </div>
             <div className="col-12" id="quiz-section">
-              <h3 className="text-center">Quiz</h3>
+              <h3>Quiz</h3>
               {this.props.quiz.questions.map((question, index) => {
                 return (
                   <div key={index}>
@@ -81,7 +83,7 @@ class Summary extends Component {
             </div>
             {this.props.validate && (
               <div className="col-12" id="demo-section">
-                <h3 className="text-center">Demo</h3>
+                <h3>Demo</h3>
                 <p>
                   <strong>Description: </strong>
                   {this.props.demo.description}
@@ -95,13 +97,16 @@ class Summary extends Component {
             )}
             <div className="col-12 mt-4 text-center">
               <button
-                onClick={this.redirectPage}
-                className="custom-btn p-2 mr-1"
+                onClick={() => this.props.setCurrentTab("4")}
+                className="custom-btn p-2 mr-1 d-inline"
               >
                 Previous
               </button>
 
-              <button className="custom-btn" onClick={this.submitChallenge}>
+              <button
+                className="custom-btn ml-1 d-inline"
+                onClick={this.submitChallenge}
+              >
                 Submit
               </button>
             </div>

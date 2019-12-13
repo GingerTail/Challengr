@@ -1,0 +1,16 @@
+.create-tab-container {
+  margin-top: 3.5rem;
+}
+
+.backUp-btn a {
+  background-color: #222629;
+  border-radius: 10px;
+  border: 0px;
+  float: right;
+  color: #66c090;
+  filter: brightness(70%);
+  transition: filter 0.3s;
+}
+.backUp-btn a:hover {
+  filter: brightness(100%);
+}
