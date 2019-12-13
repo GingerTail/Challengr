@@ -9,7 +9,8 @@ export default class Navbar extends Component {
     };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
+    console.log("MOUNTED");
     if (localStorage.getItem.token != null) {
       this.setState({ login: true });
     }

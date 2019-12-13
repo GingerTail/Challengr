@@ -4,46 +4,22 @@ import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import { TabMenu } from "./CreateTabSystem/TabMenu";
-import CreateChallenge from "./CreateChallenge/CreateChallenge";
-import DemoProject from "./DemoProject/DemoProject";
+//import CreateChallenge from "./CreateChallenge/CreateChallenge";
+//import DemoProject from "./DemoProject/DemoProject";
 import login from "./LogIn/LogIn";
 import FreeUserRegistration from "./FreeUserRegistration/FreeUserRegistration";
 import FreeUserDashboard from "./FreeUserDashboard/FreeUserDashboard";
-import Quiz from "./CreateChallenge/Quiz/Quiz";
-import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
-import Demo from "./CreateChallenge/Demo/Demo";
-import Summary from "./CreateChallenge/Summary/Summary";
+//import Quiz from "./CreateChallenge/Quiz/Quiz";
+//import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
+//import Demo from "./CreateChallenge/Demo/Demo";
+//import Summary from "./CreateChallenge/Summary/Summary";
 import MainPage from "./QuizPlay/MainPage";
-import displayChallenge from "./StartChallenge/test";
+//import displayChallenge from "./StartChallenge/test";
 import { StartChallenge } from "./StartChallenge/StartChallenge";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
 };
-
-/* const mapDispatchToProps = dispatch => ({
-  fetchData: () => dispatch({})
-});
- */
-/*
-  const handleFetchData= () =>{
-    return async function(
-        dispatch,
-        getState
-    ){
-        var response = await fetch("",  {method: "GET" });
-        if(response.ok){
-            console.log("Challenges List GET Successfully");
-                var result= await response.json()
-        }else{
-            alert("Challenges List NOT GET Successfully");
-        }
-        dispatch({
-            type:"STORE_DATA",
-            payload: result
-        })
-    }
-  } */
 
 class RouterPage extends Component {
   componentWillMount = async () => {
