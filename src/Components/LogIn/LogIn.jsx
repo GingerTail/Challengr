@@ -2,6 +2,42 @@ import React from "react";
 import "./LogIn.css";
 
 class login extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+  handleSubmit = async e => {
+    e.preventDefault();
+    let logInCredentials = {};
+    let formData = new FormData(e.target);
+    for (var [key, value] of formData) {
+      logInCredentials[key.toLowerCase()] = value;
+    }
+    await this.postLogIn(logInCredentials);
+  };
+
+  postLogIn = async credentials => {
+    console.log(credentials);
+    try {
+      let response = await fetch("http://localhost:3015/user/login", {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify(credentials)
+      });
+      if (response.ok) {
+        let json = await response.json();
+        if (json.success) {
+          localStorage.setItem("token", json.token);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   render() {
     return (
       <div className="form-box">
@@ -12,33 +48,32 @@ class login extends React.Component {
           <i className="fab fa-google" id="social-icons"></i>
           <hr />
         </div>
-        <div className="form">
-          <div className="form-group">
-            <label htmlFor="email"></label>
-            <input
-              type="email"
-              className="input-field"
-              placeholder="Email"
-              required
-            ></input>
-          </div>
-          <div className="form-group">
-            <label htmlFor="password"></label>
-            <input
-              type="password"
-              className="input-field"
-              placeholder="Enter Password"
-              required
-            ></input>
-
-            <span href="/#">Forgot Password ?</span>
-            <button type="button" className="btn-Register">
-              Log in
-            </button>
-            <button type="button" className="btn-Register">
-              Register Now
-            </button>
-          </div>
+        <form className="form-group" onSubmit={this.handleSubmit}>
+          <label htmlFor="email"></label>
+          <input
+            type="email"
+            name="Email"
+            className="input-field"
+            placeholder="Email"
+            required
+          ></input>
+          <label htmlFor="password"></label>
+          <input
+            type="password"
+            name="Password"
+            className="input-field"
+            placeholder="Enter Password"
+            required
+          ></input>
+          <span href="/#">Forgot Password ?</span>
+          <button type="submit" className="btn-Register">
+            Log in
+          </button>
+        </form>
+        <div className="form-group">
+          <button type="button" className="btn-Register">
+            Register Now
+          </button>
         </div>
       </div>
     );

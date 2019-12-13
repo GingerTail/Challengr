@@ -1,0 +1,72 @@
+.wrapper  {
+    height: auto;
+    width: 320px;
+    border:solid 1px #0020DD;
+    padding: 30px;
+    margin-top: -50px;
+    
+  }
+
+  .btn-Register{
+    margin:5px;
+    padding: 8px 30px; 
+    background: linear-gradient(to right, #0020DD, #0575E6);
+    border: 0;
+    color:#ffff;
+    outline: none;
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    border-radius: 5px;
+}
+ 
+
+  
+.wrapper-right  {
+    height: auto;
+    width: 730px;
+    /* box-shadow: 0px 10px 50px #555; */
+    padding: 10px;
+    /* border-radius:20px; */
+    border:solid 1px #0020DD;
+    
+  }
+
+.register-right{
+    margin-top: 70px;
+    position: relative;
+    margin-bottom: 20px;
+    
+}
+
+  
+  
+
+  
+ 
+  
+  
+ 
+  
+  
+  
+  
+  
+ 
+  
+ 
+
+ 
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./navbar.css";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   constructor(props) {
@@ -31,10 +31,10 @@ export default class Navbar extends Component {
         <div className="float-right link-box">
           {this.state.login == false ? (
             <>
-              <a href="#" className="mr-2">
+              <Link to="/FreeUserRegistration" className="mr-2">
                 Sign up
-              </a>
-              <a href="#LogIn">Log In</a>
+              </Link>
+              <Link to="/login">Log In</Link>
             </>
           ) : (
             <a href="#">Account</a>

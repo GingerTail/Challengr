@@ -3,11 +3,19 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
-import { StartChallenge } from "./StartChallenge/StartChallenge";
-import login from "./LogIn/LogIn";
-import FreeUser from "./FreeUser/FreeUser";
-import MainPage from "./QuizPlay/MainPage";
 import { TabMenu } from "./CreateTabSystem/TabMenu";
+import CreateChallenge from "./CreateChallenge/CreateChallenge";
+import DemoProject from "./DemoProject/DemoProject";
+import login from "./LogIn/LogIn";
+import FreeUserRegistration from "./FreeUserRegistration/FreeUserRegistration";
+import FreeUserDashboard from "./FreeUserDashboard/FreeUserDashboard";
+import Quiz from "./CreateChallenge/Quiz/Quiz";
+import GeneralSettings from "./CreateChallenge/GeneralSettings/GeneralSettings";
+import Demo from "./CreateChallenge/Demo/Demo";
+import Summary from "./CreateChallenge/Summary/Summary";
+import MainPage from "./QuizPlay/MainPage";
+import displayChallenge from "./StartChallenge/test";
+import { StartChallenge } from "./StartChallenge/StartChallenge";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -51,7 +59,12 @@ class RouterPage extends Component {
         <Route exact path="/create" component={TabMenu} />
         <Route exact path="/start/:id" component={StartChallenge} />
         <Route exact path="/login" component={login} />
-        <Route exact path="/FreeUser" component={FreeUser} />
+        <Route
+          exact
+          path="/FreeUserRegistration"
+          component={FreeUserRegistration}
+        />
+        <Route exact path="/FreeUserDashboard" component={FreeUserDashboard} />
       </Router>
     );
   }
