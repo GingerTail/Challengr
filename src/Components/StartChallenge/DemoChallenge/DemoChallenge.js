@@ -45,9 +45,15 @@ export const DemoChallenge = props => {
             <p>
               <strong>Download the PDF and start the challenge!</strong>
             </p>
-            <a href={demo.pdfLink} target="_blank" className="custom-btn">
+            {/*  <a href={demo.pdfLink} target="_blank" className="custom-btn">
               Get PDF
-            </a>
+            </a> */}
+            <button
+              onClick={() => window.open(demo.pdfLink)}
+              className="custom-btn mx-auto"
+            >
+              Get PDF
+            </button>
           </div>
           <hr />
           <div className="repository-section mt-5">
