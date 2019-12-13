@@ -1,6 +1,13 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import "./LogIn.css";
+import { connect } from "react-redux";
+import { handleGetLoggedUser } from "../../Actions/userActions";
+
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({
+  getLoggedUser: token => dispatch(handleGetLoggedUser(token))
+});
 
 class login extends React.Component {
   constructor(props) {
@@ -33,7 +40,10 @@ class login extends React.Component {
       if (response.ok) {
         let json = await response.json();
         if (json.success) {
-          localStorage.setItem("token", json.token);
+          let { token } = json;
+          this.props.getLoggedUser(token);
+          localStorage.setItem("token", token);
+          console.log(localStorage.getItem("token"));
           this.setState({ redirectTo: "/" });
         }
       }
@@ -89,4 +99,4 @@ class login extends React.Component {
   }
 }
 
-export default login;
+export default connect(mapStateToProps, mapDispatchToProps)(login);
