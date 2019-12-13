@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import Quiz from "./Quiz";
-import { token } from "../../../Actions/fetchParams";
+import { connect } from "react-redux";
+import { handleGetQuizFromDB } from "../../../Actions/ToDoChallengeActions";
+
+const mapStateToProps = reduxStore => {
+  return reduxStore;
+};
+const mapDispatchToProps = dispatch => ({
+  getQuiz: quizId => dispatch(handleGetQuizFromDB(quizId))
+});
 
 class App extends Component {
   constructor(props) {
@@ -12,28 +20,15 @@ class App extends Component {
     };
   }
 
-  componentDidMount = async () => {
-    const quiz = await this.fetchQuiz(this.props.quizId);
-    this.setState({ quiz });
+  componentDidMount = () => {
+    this.props.getQuiz(this.props.quizId);
   };
-
-  fetchQuiz = async quizId => {
-    try {
-      let response = await fetch("http://localhost:3015/quiz/" + quizId, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Bearer " + token
-        }
-      });
-      if (response.ok) {
-        let json = await response.json();
-        if (json.success) {
-          return json.quiz;
-        } else console.log(json.error);
-      }
-    } catch (err) {
-      console.log(err);
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.toDoQuiz !== this.props.toDoQuiz) {
+      this.setState({ quiz: this.props.toDoQuiz });
+    }
+    if (this.state.quizStarted) {
+      this.props.startTimer(true);
     }
   };
 
@@ -66,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
