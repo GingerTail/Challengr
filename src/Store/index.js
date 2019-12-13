@@ -8,9 +8,10 @@ import validateReducer from "../Reducers/validateReducer";
 import generalSettingsReducer from "../Reducers/generalSettingReducer";
 import demoReducer from "../Reducers/demoReducer";
 import pdfRawReducer from "../Reducers/pdfRawReducer";
-import toDoQuizReducer from "../Reducers/toDoQuizReducer"
+import toDoQuizReducer from "../Reducers/toDoQuizReducer";
 import StartChallengeReducer from "../Reducers/StartChallengeReducer";
 import handleTabReducer from "../Reducers/handleTabReducer";
+import userProfileReducer from "../Reducers/userProfileReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -32,7 +33,7 @@ const initialState = {
     difficulty: "",
     type: []
   },
-
+  loggedUser: {},
   quiz: {
     time: 300,
     author: "",
@@ -47,9 +48,7 @@ const initialState = {
       }
     ]
   },
-  toDoQuiz:{
-
-  },
+  toDoQuiz: {},
   demo: {
     description: "",
     pdfLink: "",
@@ -71,6 +70,7 @@ const bigReducer = combineReducers({
   filter: filterReducer,
   quiz: quizReducer,
   demo: demoReducer,
+  loggedUser: userProfileReducer,
   pdfFormData: uploadReducer,
   pdfRaw: pdfRawReducer,
   toDoQuiz: toDoQuizReducer,

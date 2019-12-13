@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import Quiz from "./Quiz";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleGetQuizFromDB } from "../../../Actions/ToDoChallengeActions";
+import { getToken, refreshToken } from "../../../Actions/fetchParams";
 
 const mapStateToProps = reduxStore => {
   return reduxStore;
@@ -16,11 +18,16 @@ class App extends Component {
     super(props);
     this.state = {
       quiz: null,
-      quizStarted: false
+      quizStarted: false,
+      redirectTo: "",
+      allowAccess: true
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    let token = getToken();
+    let allowAccess = await refreshToken(token);
+    this.setState({ allowAccess });
     this.props.getQuiz(this.props.quizId);
   };
   componentDidUpdate = (prevProps, prevState) => {
@@ -33,7 +40,7 @@ class App extends Component {
   };
 
   render() {
-    return (
+    return this.state.allowAccess ? (
       <div className="container-fluid mb-4">
         {this.state.quizStarted === true ? (
           this.state.quiz != null && <Quiz quiz={this.state.quiz} />
@@ -57,6 +64,8 @@ class App extends Component {
           </div>
         )}
       </div>
+    ) : (
+      <Redirect to="/login" />
     );
   }
 }

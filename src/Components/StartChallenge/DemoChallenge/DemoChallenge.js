@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { token } from "../../../Actions/fetchParams";
+import { getToken } from "../../../Actions/fetchParams";
 
 export const DemoChallenge = props => {
   const demoId = props.demoId;
@@ -18,7 +18,7 @@ export const DemoChallenge = props => {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: "Bearer " + token
+            Authorization: "Bearer " + getToken()
           }
         }
       );

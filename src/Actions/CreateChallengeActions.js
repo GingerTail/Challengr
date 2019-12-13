@@ -1,4 +1,4 @@
-import {token} from "./fetchParams"
+import { getToken } from "./fetchParams";
 
 export const handleGetQuiz = quiz => {
   return async function(dispatch, getState) {
@@ -6,8 +6,7 @@ export const handleGetQuiz = quiz => {
       var response = await fetch("http://localhost:3015/quiz", {
         headers: {
           "content-type": "application/json",
-          authorization:
-            "Bearer " + token
+          authorization: "Bearer " + getToken()
         },
         body: JSON.stringify(quiz),
         method: "POST"
@@ -35,8 +34,7 @@ export const uploadImageQuiz = (formData, index) => {
         "http://localhost:3015/quiz/upload_question_images",
         {
           headers: {
-            authorization:
-            "Bearer " + token
+            authorization: "Bearer " + getToken()
           },
           body: formData,
           method: "POST"
@@ -65,8 +63,7 @@ export const handleGetPdf = formData => {
         "http://localhost:3015/demoChallenge/upload_demo_pdf",
         {
           headers: {
-            authorization:
-            "Bearer " + token
+            authorization: "Bearer " + getToken()
           },
           body: formData,
           method: "POST"
@@ -93,8 +90,7 @@ export const handleGetDemo = demo => {
       var response = await fetch("http://localhost:3015/demoChallenge", {
         headers: {
           "content-type": "application/json",
-          authorization:
-          "Bearer " + token
+          authorization: "Bearer " + getToken()
         },
         body: JSON.stringify(demo),
         method: "POST"
@@ -120,8 +116,7 @@ export const handleCreateChallengr = generalSettings => {
       var response = await fetch("http://localhost:3015/challenge", {
         headers: {
           "content-type": "application/json",
-          authorization:
-          "Bearer " + token
+          authorization: "Bearer " + getToken()
         },
         body: JSON.stringify(generalSettings),
         method: "POST"

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./navbar.css";
 
-export default class Navbar extends Component {
+const mapStateToProps = state => state;
+
+class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,8 +14,16 @@ export default class Navbar extends Component {
   }
 
   componentDidMount = () => {
-    console.log("MOUNTED");
-    if (localStorage.getItem.token != null) {
+    if (localStorage.getItem("token") !== null) {
+      this.setState({ login: true });
+    }
+  };
+
+  componentDidUpdate = prevProps => {
+    if (
+      prevProps.loggedUser !== this.props.loggedUser &&
+      this.props.loggedUser !== {}
+    ) {
       this.setState({ login: true });
     }
   };
@@ -31,7 +42,7 @@ export default class Navbar extends Component {
           Challengr
         </a>
         <div className="float-right link-box">
-          {this.state.login == false ? (
+          {!this.state.login ? (
             <>
               <Link to="/FreeUserRegistration" className="mr-2">
                 Sign up
@@ -39,10 +50,14 @@ export default class Navbar extends Component {
               <Link to="/login">Log In</Link>
             </>
           ) : (
-            <a href="#">Account</a>
+            <>
+              <Link to="/">{this.props.loggedUser.username}</Link>
+              <button className="custom-btn d-inline">Log Out</button>
+            </>
           )}
         </div>
       </nav>
     );
   }
 }
+export default connect(mapStateToProps)(Navbar);
