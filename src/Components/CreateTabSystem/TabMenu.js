@@ -58,7 +58,7 @@ export const TabMenu = props => {
                 toggle("1");
               }}
             >
-              Introduction
+              <h5>Introduction </h5>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -68,7 +68,7 @@ export const TabMenu = props => {
                 toggle("2");
               }}
             >
-              Quiz
+              <h5> Quiz </h5>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -78,7 +78,7 @@ export const TabMenu = props => {
                 toggle("3");
               }}
             >
-              Demo
+              <h5>Demo</h5>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -88,7 +88,7 @@ export const TabMenu = props => {
                 toggle("4");
               }}
             >
-              General Settings
+              <h5>General Settings</h5>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -98,38 +98,38 @@ export const TabMenu = props => {
                 toggle("5");
               }}
             >
-              Summary
+              <h5>Summary</h5>
             </NavLink>
           </NavItem>
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <div className="challenge-nav p-3 mb-3">
-              <h2>Introduction</h2>
+
             </div>
             <IntroductionTab />
           </TabPane>
           <TabPane tabId="2">
             <div className="challenge-nav p-3 mb-3">
-              <h2>Quiz</h2>
+
             </div>
             <QuizTab />
           </TabPane>
           <TabPane tabId="3">
             <div className="challenge-nav p-3 mb-3">
-              <h2>Demo</h2>
+
             </div>
             <DemoTab />
           </TabPane>
           <TabPane tabId="4">
             <div className="challenge-nav p-3 mb-3">
-              <h2>General Settings</h2>
+
             </div>
             <GeneralSettingsTab />
           </TabPane>
           <TabPane tabId="5">
             <div className="challenge-nav p-3 mb-3">
-              <h2>Summary</h2>
+
             </div>
             <SummaryTab />
           </TabPane>

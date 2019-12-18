@@ -1,13 +1,49 @@
+
+
 .wrapper  {
-    height: auto;
-    width: 320px;
-    border:solid 1px #0020DD;
-    padding: 30px;
-    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0px 10px 50px #555;
+    height: 615px;
+    width:300px;
+    margin-top: 120px;
+    margin-left: 70px;
+    margin-bottom:100px;
+    padding: 20px;
+    
     
   }
 
-  .btn-Register{
+  .wrapper-col-2{
+     margin-top: 50px;
+     
+     
+  }
+
+  
+
+ 
+.profile-right  {
+    height: 615px;
+    width: 1000px;
+    box-shadow: 0px 10px 50px #555;
+    padding: 30px;
+    
+  }
+
+.profile-right{
+    margin-top: 120px;
+    position: relative;
+    margin-bottom: 20px;
+    width:900px;
+    margin-left: 50px;
+    
+    
+
+}
+.btn-Register{
     margin:5px;
     padding: 8px 30px; 
     background: linear-gradient(to right, #0020DD, #0575E6);
@@ -19,26 +55,49 @@
     align-self: center;
     border-radius: 5px;
 }
- 
 
-  
-.wrapper-right  {
-    height: auto;
-    width: 730px;
-    /* box-shadow: 0px 10px 50px #555; */
-    padding: 10px;
-    /* border-radius:20px; */
-    border:solid 1px #0020DD;
+.btn-change-plan{
+    margin:5px;
+    padding: 8px 30px; 
+    background: linear-gradient(to right, #0020DD, #0575E6);
+    border: 0;
+    color:#ffff;
+    outline: none;
     
-  }
-
-.register-right{
-    margin-top: 70px;
-    position: relative;
-    margin-bottom: 20px;
+    border-radius: 5px;
     
 }
 
+.btn-Register-Save-changes{
+    margin:5px;
+    padding: 8px 30px; 
+    background: #0020DD;
+    border: 0;
+    color:#ffff;
+    outline: none;
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    border-radius: 5px;
+}
+.btn-Register-Close{
+    margin:5px;
+    padding: 8px 30px; 
+    background: rgb(221, 0, 0);
+    border: 0;
+    color:#ffff;
+    outline: none;
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    border-radius: 5px;
+
+
+}
+.img{
+    align-self:center;
+    text-align:center!important;
+}
   
   
 
@@ -65,7 +124,52 @@
   
   
   
+  .createAccount button {
+    background-color: #0020DD;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
   
+  .createAccount button:hover {
+    color: #0020DD;
+    background-color: #fff;
+    border: 2px solid #0020DD;
+  }
+
+  #btn-facebook{
+    background-color: #3b5998;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 49%;
+    margin-top: 5px;
+    padding: 8px 0px;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    margin-left: 1%;
+  }
+
+  #btn-Google{
+    background-color: #c32f10;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 49%;
+    margin-top: 5px;
+    padding: 8px 0px;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    margin-right: 1%;
+  }
 
   
   

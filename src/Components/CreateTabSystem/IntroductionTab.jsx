@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+
 const mapDispatchToProps = dispatch => ({
   setCurrentTab: currentTab =>
     dispatch({
@@ -14,7 +15,8 @@ class IntroductionTab extends Component {
   render() {
     return (
       <>
-        <div className="px-5">
+
+        <div className="container-introduction">
           <div className="row">
             <div className="col-12">
               <h1>CREATE CHALLENGE</h1>
@@ -22,59 +24,60 @@ class IntroductionTab extends Component {
               <p>
                 <strong>Quiz: </strong> <br />
               </p>
-              <ul>
-                <li>
-                  At least <strong>5 questions</strong> or more
+
+              <li>
+                At least <strong>5 questions</strong> or more
                 </li>
-                <li>
-                  At least <strong>50 characters</strong> for every question
-                  title
+              <li>
+                At least <strong>50 characters</strong> for every question
+                title
                 </li>
-              </ul>
+
               <p>
                 <strong>Demo: </strong> <br />
               </p>
-              <ul>
-                <li>
-                  At least <strong>50 characters</strong> for the description
+
+              <li>
+                At least <strong>50 characters</strong> for the description
                 </li>
-                <li>
-                  You must upload a <strong>PDF file</strong>
-                </li>
-              </ul>
+              <li>
+                You must upload a <strong>PDF file</strong>
+              </li>
+
               <p>
                 <strong>General Settings: </strong> <br />
               </p>
-              <ul>
-                <li>
-                  At least <strong>50 characters</strong> for the description
+
+              <li>
+                At least <strong>50 characters</strong> for the description
                 </li>
-                <li>
-                  languages and difficulty are <strong>Required</strong>
-                </li>
-              </ul>
+              <li>
+                languages and difficulty are <strong>Required</strong>
+              </li>
+
               <p>
                 <strong>Other: </strong> <br />
               </p>
-              <ul>
-                <li>
-                  do not refer to:{" "}
-                  <strong>
-                    Violence, Pornopgraphy, Racism and any content that may be
-                    offensive
+
+              <li>
+                Do not refer to:{" "}
+                <strong>
+                  Violence, Pornopgraphy, Racism and any content that may be
+                  offensive
                   </strong>
-                </li>
-              </ul>
-              <h4 className="mb-1">Everything clear?</h4>
+              </li>
+
+              <h4>Everything clear?</h4>
               <button
                 onClick={() => this.props.setCurrentTab("2")}
-                className="custom-btn p-2"
+                className="btn center"
               >
                 Create Challenge
               </button>
             </div>
           </div>
         </div>
+
       </>
     );
   }

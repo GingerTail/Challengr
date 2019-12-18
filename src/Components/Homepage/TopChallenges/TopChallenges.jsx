@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "./topchallenges.css";
+import Logomicrosoft from "./img/microsoft-logo.png";
+import Logoapple from "./img/apple-logo.png";
+import Logofacebook from "./img/Facebook-logo-png.png"
 
 export default class TopChallenges extends Component {
   render() {
@@ -14,18 +17,17 @@ export default class TopChallenges extends Component {
                   <strong>QUIZ/CODE/DEMO</strong>
                 </p>
                 <p>
-                  <strong>Author: </strong> username
+                  <img src={Logoapple} width='80px' height="85px"  ></img>
                   <br />
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <br />
                 </p>
                 <p>
-                  <strong>upvotes</strong> <br />
-                  icons
+
                 </p>
                 <p>
                   <strong>HTML - CSS - JS</strong>
                 </p>
-                <button className="custom-btn">See more</button>
+                <button className="btn">See more</button>
               </div>
             </div>
             <div className="col-4">
@@ -35,18 +37,16 @@ export default class TopChallenges extends Component {
                   <strong>QUIZ/CODE/DEMO</strong>
                 </p>
                 <p>
-                  <strong>Author: </strong> username
+                  <img src={Logomicrosoft} width='110px'></img>
                   <br />
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <p>
-                  <strong>upvotes</strong> <br />
-                  icons
+
+
+
                 </p>
                 <p>
                   <strong>HTML - CSS - JS</strong>
                 </p>
-                <button className="custom-btn">See more</button>
+                <button className="btn">See more</button>
               </div>
             </div>
             <div className="col-4">
@@ -56,18 +56,18 @@ export default class TopChallenges extends Component {
                   <strong>QUIZ/CODE/DEMO</strong>
                 </p>
                 <p>
-                  <strong>Author: </strong> username
+                  <img src={Logofacebook} width='80px' height="85px"></img>
                   <br />
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <br />
+
                 </p>
                 <p>
-                  <strong>upvotes</strong> <br />
-                  icons
+
                 </p>
                 <p>
                   <strong>HTML - CSS - JS</strong>
                 </p>
-                <button className="custom-btn">See more</button>
+                <button className="btn">See more</button>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const handleCreateFilter = (event, typeName) => {
-  return async function(dispatch, getState) {
+  return async function (dispatch, getState) {
     dispatch({
       type: typeName,
       payload: event
@@ -87,8 +87,9 @@ class FilterNav extends Component {
     return (
       <>
         <div className="filternav-container">
-          <div className="row">
-            <h4>Filter:</h4>
+          <div className="colum">
+            <h4 className="text-center">Filter</h4>
+            <hr></hr>
             <div className="col-12 text-left">
               <form action="/action_page.php">
                 <p>
@@ -100,7 +101,7 @@ class FilterNav extends Component {
                   value="javascript"
                   onClick={event => this.EditFilter(event)}
                 />{" "}
-                <p className="d-inline">Javascript</p>
+                <p className="d-inline text-left">Javascript</p>
                 <br />
                 <input
                   type="checkbox"
@@ -129,7 +130,7 @@ class FilterNav extends Component {
                 <br />
               </form>
             </div>
-            <div className="col-12">
+            <div className="col-12 text-left" >
               <form action="/action_page.php">
                 <p>
                   <strong>Difficulty</strong>
@@ -161,7 +162,7 @@ class FilterNav extends Component {
                 <br />
               </form>
             </div>
-            <div className="col-12">
+            <div className="col-12 text-left">
               <form action="/action_page.php">
                 <p>
                   <strong>Type</strong>
@@ -193,7 +194,7 @@ class FilterNav extends Component {
                 <br />
               </form>
             </div>
-            <button className="custom-btn" onClick={this.SubmitFilter}>
+            <button className="btn" onClick={this.SubmitFilter}>
               Search
             </button>
           </div>

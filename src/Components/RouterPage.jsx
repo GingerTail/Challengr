@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import { TabMenu } from "./CreateTabSystem/TabMenu";
-import login from "./LogIn/LogIn";
+// import LogIn from "./Login/LogIn";
 import FreeUserRegistration from "./FreeUserRegistration/FreeUserRegistration";
 import FreeUserDashboard from "./FreeUserDashboard/FreeUserDashboard";
 import { StartChallenge } from "./StartChallenge/StartChallenge";
@@ -25,7 +25,7 @@ class RouterPage extends Component {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/create" component={TabMenu} />
         <Route exact path="/start/:id" component={StartChallenge} />
-        <Route exact path="/login" component={login} />
+        {/* <Route exact path="/LogIn" component={LogIn} /> */}
         <Route
           exact
           path="/FreeUserRegistration"

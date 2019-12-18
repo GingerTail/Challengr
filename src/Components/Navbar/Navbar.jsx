@@ -30,34 +30,46 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className=" w-100 navbar bg-navbar fixed-top">
-        <a className="navbar-brand" href="/">
-          <img
-            src="/docs/4.3/assets/brand/bootstrap-solid.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-            alt=""
-          />
-          Challengr
-        </a>
-        <div className="float-right link-box">
+      <nav class="navbar">
+        <a class="navbar-logo" href="/"><h3>Challengr</h3></a>
+        <div className="justify-content-start">
           {!this.state.login ? (
-            <>
-              <Link to="/FreeUserRegistration" className="mr-2">
-                Sign up
-              </Link>
-              <Link to="/login">Log In</Link>
-            </>
+            <form class="form-inline">
+              <>
+                <button className="btn-navbar"><Link className="Link" to="/FreeUserRegistration">Sign up</Link></button>
+
+                <button className="btn-navbar"><Link className="Link" to="/login">Log In</Link></button>
+
+              </>
+            </form>
           ) : (
-            <>
-              <Link to="/">{this.props.loggedUser.username}</Link>
-              <button className="custom-btn d-inline">Log Out</button>
-            </>
-          )}
+              <>
+                <Link to="/">{this.props.loggedUser.username}</Link>
+                <button className="btn  ml-3" type="submit">Log Out</button>
+              </>
+            )}
+
         </div>
+
+
       </nav>
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default connect(mapStateToProps)(Navbar);
