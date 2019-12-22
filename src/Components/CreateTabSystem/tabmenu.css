@@ -1,21 +1,23 @@
 .create-tab-container {
-  margin-top: 1rem;
+  margin-top: 2rem;
   background-color: #ffff;
+  margin-bottom: 20px;
+  
   
 }
 
-.container-introduction{
+.container-fluid{
   box-shadow: 0px 10px 50px #555;
-  text-align:center;
-  height: auto;
-  padding: 20px;
-  width: 800px;
   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-
-  margin-left: 300px;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  text-align:center;
+  padding: 30px;
+  width:800px;
+  border: 4px solid #eee;
+  
+  
 }
 
 
@@ -34,7 +36,13 @@
   
 }
 .backUp-btn:hover {
-  text-decoration: none;
+  text-decoration:none;
   color: #0020DD;
   filter: brightness(100%);
+}
+
+@media (max-width:800px){
+  .container-fluid{
+         width:400px
+  }
 }

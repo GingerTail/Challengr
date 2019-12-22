@@ -5,6 +5,7 @@
 } */
 .navbar{
   background-color: #ffff;
+  box-shadow: 0 6px 16px 0 rgba(0,0,0,.2);
   
 }
 
@@ -29,17 +30,15 @@
 
 
 .btn-navbar:hover {
-  color: #0020dd;
-  background-color: #fff;
+  background-color: #0020dd;
+  color:#fff;
   border: 2px solid #0020dd;
   
 }
 
 
 
-.Link{
-  color:#fff;
-}
+
 
 
 

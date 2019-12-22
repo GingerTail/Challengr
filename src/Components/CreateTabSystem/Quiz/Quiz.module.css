@@ -4,16 +4,18 @@
   transition: opacity 1s ease-out;
   
 }
-.quizformContainer {
-  background-color: #eee;
+/* .quizformContainer {
   box-shadow: 0px 10px 50px #555;
   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    width:80%;
-    height:auto;
-}
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  text-align:center;
+  padding: 30px;
+  width: 800px;
+  border: 4px solid #eee;
+  
+} */
 
 .quizContainer.fadeIn {
   opacity: 1;
@@ -28,6 +30,7 @@
 input {
   border-radius: 2px;
   border: 1px solid grey;
+  width: 100%;
 }
 
 .inputUpload {
@@ -40,6 +43,7 @@ input {
 .disabled-link {
   pointer-events: none;
 }
+
 
 /* to add to global scope 
 

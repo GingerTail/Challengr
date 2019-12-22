@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import LogoLogo from "./img/LogoChallengr.png";
 import "./navbar.css";
 
 const mapStateToProps = state => state;
@@ -30,21 +31,22 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav class="navbar">
-        <a class="navbar-logo" href="/"><h3>Challengr</h3></a>
+      <nav className="navbar">
+        <Link to="/"><img src={LogoLogo} width='150px' href="/" mt-5 style={{ textDecoration: 'none' }} /></Link>
+
+        <a className="navbar-logo" />
         <div className="justify-content-start">
           {!this.state.login ? (
             <form class="form-inline">
               <>
-                <button className="btn-navbar"><Link className="Link" to="/FreeUserRegistration">Sign up</Link></button>
-
-                <button className="btn-navbar"><Link className="Link" to="/login">Log In</Link></button>
+                <button className="btn-navbar"><Link to="/FreeUserRegistration" style={{ textDecoration: 'none', color: '#fff' }}>Sign up</Link></button>
+                <button className="btn-navbar"><Link to="/login" style={{ textDecoration: 'none', color: '#fff' }}>Log In</Link></button>
 
               </>
             </form>
           ) : (
               <>
-                <Link to="/">{this.props.loggedUser.username}</Link>
+                <Link to="/">{this.props.loggedUser.username} </Link>
                 <button className="btn  ml-3" type="submit">Log Out</button>
               </>
             )}

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Homepage from "./Homepage/Homepage";
 import Navbar from "./Navbar/Navbar";
 import { TabMenu } from "./CreateTabSystem/TabMenu";
-// import LogIn from "./Login/LogIn";
+// import LogIn from "./Login/LogIn"
 import FreeUserRegistration from "./FreeUserRegistration/FreeUserRegistration";
 import FreeUserDashboard from "./FreeUserDashboard/FreeUserDashboard";
 import { StartChallenge } from "./StartChallenge/StartChallenge";

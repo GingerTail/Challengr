@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 
+
 const mapDispatchToProps = dispatch => ({
   setCurrentTab: currentTab =>
     dispatch({
@@ -16,9 +17,9 @@ class IntroductionTab extends Component {
     return (
       <>
 
-        <div className="container-introduction">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-12">
+            <div className="col-sm-12 col-md-12 col-lg-12">
               <h1>CREATE CHALLENGE</h1>
               <h4>Rules: </h4>
               <p>

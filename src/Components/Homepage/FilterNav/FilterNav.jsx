@@ -86,29 +86,37 @@ class FilterNav extends Component {
   render() {
     return (
       <>
-        <div className="filternav-container">
-          <div className="colum">
+        <div className="container1">
+          <div className="column">
             <h4 className="text-center">Filter</h4>
             <hr></hr>
-            <div className="col-12 text-left">
+            <div className="col-sm-12 col-lg-12">
               <form action="/action_page.php">
-                <p>
-                  <strong>Languages</strong>
-                </p>
+
+                <strong>Languages</strong>
+
+                <br />
+
+
                 <input
                   type="checkbox"
                   name="languages"
                   value="javascript"
                   onClick={event => this.EditFilter(event)}
-                />{" "}
-                <p className="d-inline text-left">Javascript</p>
-                <br />
+                /> {" "}
+                <div className="col-2">
+                  Javascript
+                </div>
+
+
                 <input
                   type="checkbox"
                   name="languages"
                   value="html"
                   onClick={event => this.EditFilter(event)}
                 />{" "}
+
+
                 HTML
                 <br />
                 <input

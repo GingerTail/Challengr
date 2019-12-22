@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import QuizFrom from "./QuizForm";
 import QuizList from "./QuizList";
 import { connect } from "react-redux";
-import style from "./Quiz.module.css";
+import "./Quiz.module.css";
 import { handleAddQuestion } from "../../../Actions/handleAddQuestion";
 import { Link } from "react-router-dom";
 
@@ -54,38 +54,40 @@ class QuizTab extends Component {
   render() {
     return (
       <>
-        <div className="container-fluid text-left mb-5 mt-0">
+        <div className="text-left mb-5 mt-0">
           <div className="row">
-            {this.props.quiz.questions.map((question, index) => {
-              return (
-                <div className="col-12" key={index}>
-                  <QuizFrom index={index} />
-                </div>
-              );
-            })}
-            <div className="col-12 text-center">
-              <button
-                className="custom-btn float-left"
-                onClick={this.AddQuestion}
-              >
-                Add Question
+            <div className="col-12">
+              {this.props.quiz.questions.map((question, index) => {
+                return (
+                  <div className="col-12" key={index}>
+                    <QuizFrom index={index} />
+                  </div>
+                );
+              })}
+              <div className="col-6 text-center">
+                <button className="btn"
+                  className="btn width='100%' float-left"
+                  onClick={this.AddQuestion}
+                >
+                  Add Question
               </button>
-              <button
-                onClick={event => this.allowLink(event, "1")}
-                className="custom-btn mr-1 d-inline"
-              >
-                Previous
+                <button
+                  onClick={event => this.allowLink(event, "1")}
+                  className="btn mr-1 d-inline"
+                >
+                  Previous
               </button>
-              <button
-                onClick={event => this.allowLink(event, "3")}
-                className="custom-btn ml-1 d-inline"
-              >
-                Next
+                <button
+                  onClick={event => this.allowLink(event, "3")}
+                  className="btn ml-1 d-inline"
+                >
+                  Next
               </button>
-            </div>
-            {/* <div className="col-12 mt-3">
+              </div>
+              {/* <div className="col-12 mt-3">
               <QuizList />
             </div> */}
+            </div>
           </div>
         </div>
       </>

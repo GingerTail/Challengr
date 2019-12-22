@@ -1,16 +1,21 @@
-.filternav-container{
+.container1{
   background-color: #ffff;
-  margin-top: -5px;
-  /* border: 4px solid #eee; */
-  
   box-shadow: 0px 10px 50px #555;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  text-align:center;
   padding: 30px;
-}
+  width:300px;
+  border: 4px solid #eee;
+} 
 
 .filternav-container form {
-  display: block;
+  display: inline-block;
   
 }
+
 
 .btn{
   background-color: #0020dd;
@@ -24,9 +29,6 @@
   letter-spacing: 1px;
   margin-bottom: 0.25em;
   
-  
-
-
 }
 
 
@@ -45,11 +47,9 @@ strong{
   color:#0020dd;
 }
 
-.form{
-  background-color: #ffff;
-  margin-top: -5px;
-  /* border: 4px solid #eee; */
-  
-  box-shadow: 0px 10px 50px #555;
-
+@media (max-width:300px){
+  .container1{
+         width:300px
+  }
 }
+

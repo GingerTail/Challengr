@@ -86,11 +86,11 @@ class QuizFrom extends Component {
   render() {
     return (
       <>
-        <div className="container">
-          <div className={`row ${style.quizformContainer}`}>
+        <div className="container-fluid">
+          <div className={`row ${style.quizformContainer}`} col-lg-12>
             <div className="col-sm-12 col-lg-6 text-center mb-5">
               <p className="">
-                <strong>Upload an Image: </strong>
+                <h3><strong>Upload an Image:</strong></h3>
               </p>
               {this.props.quiz.questions[this.props.index].question.image !==
                 "" ? (
@@ -117,7 +117,7 @@ class QuizFrom extends Component {
             <div className="col-sm-12 col-lg-6">
               <div className="row">
                 <div className="col-12">
-                  <label>Question {this.props.index + 1} </label>
+                  <h3 className="title"><label>Question {this.props.index + 1} </label></h3>
                   <input
                     className="d-block"
                     name="title"
@@ -126,7 +126,7 @@ class QuizFrom extends Component {
                     onChange={e => this.updateTitle(e)}
                   />
                 </div>
-                <div className="col-12">
+                <div className="col-12 mt-4">
                   <p>
                     <strong>Answers List</strong>
                   </p>
@@ -157,10 +157,10 @@ class QuizFrom extends Component {
             </div>
             <div>
               <button
-                className="btn mt-4 mb-4 pl-2"
+                className="btn mt-4 mb-4 pl-2 pr-2"
                 onClick={this.addWrongAnswer}
               >
-                add wrong answer
+                Add wrong answer
             </button>
             </div>
           </div>

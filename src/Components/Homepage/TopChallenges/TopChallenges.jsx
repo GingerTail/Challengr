@@ -8,11 +8,11 @@ export default class TopChallenges extends Component {
   render() {
     return (
       <>
-        <div className="container" id="top-ch-container">
+        <div className="container-fluid" id="top-ch-container">
           <div className="row">
-            <div className="col-4">
+            <div className="col-sm-12 col-md-12 col-lg-4">
               <div className="card-container">
-                <h4>TEST1</h4>
+                <h4>TEST</h4>
                 <p>
                   <strong>QUIZ/CODE/DEMO</strong>
                 </p>
@@ -30,14 +30,14 @@ export default class TopChallenges extends Component {
                 <button className="btn">See more</button>
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-sm-12 col-md-12 col-lg-4">
               <div className="card-container">
-                <h4>TEST1</h4>
+                <h4>TEST</h4>
                 <p>
                   <strong>QUIZ/CODE/DEMO</strong>
                 </p>
                 <p>
-                  <img src={Logomicrosoft} width='110px'></img>
+                  <img src={Logomicrosoft} width='110px' height="125px"></img>
                   <br />
 
 
@@ -49,9 +49,9 @@ export default class TopChallenges extends Component {
                 <button className="btn">See more</button>
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-sm-12 col-md-12 col-lg-4">
               <div className="card-container">
-                <h4>TEST1</h4>
+                <h4>TEST</h4>
                 <p>
                   <strong>QUIZ/CODE/DEMO</strong>
                 </p>
@@ -72,7 +72,7 @@ export default class TopChallenges extends Component {
             </div>
           </div>
         </div>
-        <hr />
+
       </>
     );
   }

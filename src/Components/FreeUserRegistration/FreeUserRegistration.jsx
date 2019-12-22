@@ -130,10 +130,10 @@ class FreeUser extends Component {
         {this.state.redirectTo !== "" && (
           <Redirect to={this.state.redirectTo} />
         )}
-        <div className="container-fluid" style={{ overflow: "hidden" }}>
+        <div className="container mb-20px">
           <div className="row">
-            <div className="col-xs-12 col-sm-4 register-left offset-1">
-              <h1>Free User</h1>
+            <div className="col-xs-12 col-sm-5 register-left offset-1">
+              <h1 className="Title">Free User</h1>
               <hr />
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -142,10 +142,10 @@ class FreeUser extends Component {
                 officia id maiores impedit incidunt ut repellat!
               </p>
             </div>
-            <div className="col-xs-12 col-sm-7 register-right">
+            <div className="col-xs-12 col-sm-7 mt-2">
               <div className="wrapperForm">
                 <div className="form-wrapper">
-                  <h1>Register</h1>
+                  <h1 className="Title">Register</h1>
 
                   <hr></hr>
 
